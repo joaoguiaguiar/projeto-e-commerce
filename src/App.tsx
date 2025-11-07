@@ -9,15 +9,12 @@ import { CarrinhoProvider } from './state/context/CarrinhoContext';
 function App() {
   return (
     <>
-
       <RecoilRoot>
         <CarrinhoProvider>
           <EstilosGlobais />
           <AppRoutes />
         </CarrinhoProvider>
       </RecoilRoot>
-
-
     </>
   );
 }

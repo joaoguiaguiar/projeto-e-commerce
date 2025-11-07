@@ -34,7 +34,9 @@ const ContainerBotao = styled.div`
 `;
 
 const ModalCarrinho = ({ aberta, aoFechar }: ModalCarrinhoProps) => {
+  
   const { itensCarrinho, atualizarQuantidade, removerDoCarrinho, gerarPedido } = useCarrinho();
+  
   const cep = useRecoilValue(cepAtom);
 
   const navigate = useNavigate();

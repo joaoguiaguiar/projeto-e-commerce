@@ -4,7 +4,7 @@
       "id": 1,
       "nome": "Mouse USB gamer multilaser",
       "descricao": "Mouse Gamer Multilaser MO298: O Mouse Gamer Multilaser MO298 é o aliado perfeito para suas partidas intensas!",
-      "imagem": "/IMG/mause.webp",
+      "imagem": "/IMG/eletronicos/mause.webp",
       "preco": 20,
       "quantidade": 0
     },
@@ -12,7 +12,7 @@
       "id": 2,
       "nome": "Monitor Curvo Samsung Odyssey 27\"",
       "descricao": "Monitor curvo de 27\" Full HD, ideal para gamers e profissionais que buscam performance.",
-      "imagem": "/IMG/monitor.webp",
+      "imagem": "/IMG/eletronicos/monitor.webp",
       "preco": 89.9,
       "quantidade": 0
     },
@@ -20,7 +20,7 @@
       "id": 3,
       "nome": "Fone de Ouvido Tune 500BT",
       "descricao": "Fone com cancelamento de ruído, som de alta qualidade e conforto para longas sessões.",
-      "imagem": "/IMG/fone.webp",
+      "imagem": "/IMG/eletronicos/fone.webp",
       "preco": 70,
       "quantidade": 0
     },
@@ -28,7 +28,7 @@
       "id": 4,
       "nome": "Smartphone Samsung Galaxy S21",
       "descricao": "Smartphone Galaxy S21, tela 6.2\", câmeras de alta resolução, desempenho incrível.",
-      "imagem": "/IMG/celular.webp",
+      "imagem": "/IMG/eletronicos/celular.webp",
       "preco": 2999.99,
       "quantidade": 10
     },
@@ -36,7 +36,7 @@
       "id": 5,
       "nome": "Notebook Dell Inspiron 15",
       "descricao": "Notebook Dell com processador Intel i7, 16GB RAM e tela Full HD.",
-      "imagem": "/IMG/notebook.webp",
+      "imagem": "/IMG/eletronicos/notebook.webp",
       "preco": 3999.99,
       "quantidade": 8
     },
@@ -44,7 +44,7 @@
       "id": 6,
       "nome": "Smartwatch Samsung Galaxy Watch 4",
       "descricao": "Smartwatch com monitoramento de saúde e desempenho físico, design moderno.",
-      "imagem": "/IMG/smartwatch.webp",
+      "imagem": "/IMG/eletronicos/smartwatch.webp",
       "preco": 799.99,
       "quantidade": 5
     },
@@ -52,7 +52,7 @@
       "id": 7,
       "nome": "Câmera Digital Canon EOS Rebel T7",
       "descricao": "Câmera DSLR com excelente qualidade de imagem e gravação de vídeos em Full HD.",
-      "imagem": "/IMG/camera.webp",
+      "imagem": "/IMG/eletronicos/camera.webp",
       "preco": 2500.00,
       "quantidade": 4
     },
@@ -60,7 +60,7 @@
       "id": 8,
       "nome": "Projetor Epson EF-100",
       "descricao": "Projetor a laser compact, ideal para apresentações e entretenimento em casa.",
-      "imagem": "/IMG/projetor.webp",
+      "imagem": "/IMG/eletronicos/projetor.webp",
       "preco": 1799.00,
       "quantidade": 3
     },
@@ -68,7 +68,7 @@
       "id": 9,
       "nome": "Xbox Series X",
       "descricao": "Console de videogame Xbox Series X, potência gráfica e desempenho superiores.",
-      "imagem": "/IMG/xbox.webp",
+      "imagem": "/IMG/eletronicos/xbox.webp",
       "preco": 4999.99,
       "quantidade": 6
     },
@@ -76,7 +76,7 @@
       "id": 10,
       "nome": "PlayStation 5",
       "descricao": "Console PlayStation 5, tecnologia de ponta com desempenho gráfico ultra-rápido.",
-      "imagem": "/IMG/ps5.webp",
+      "imagem": "/IMG/eletronicos/ps5.webp",
       "preco": 4999.99,
       "quantidade": 7
     },
@@ -84,7 +84,7 @@
       "id": 11,
       "nome": "GoPro Hero 9",
       "descricao": "Câmera de ação GoPro Hero 9, ideal para aventuras e gravações de alta qualidade.",
-      "imagem": "/IMG/gopro.webp",
+      "imagem": "/IMG/eletronicos/gopro.webp",
       "preco": 2499.99,
       "quantidade": 5
     },
@@ -92,7 +92,7 @@
       "id": 12,
       "nome": "Caixa de Som JBL Flip 5",
       "descricao": "Caixa de som Bluetooth, resistência à água e som de alta qualidade.",
-      "imagem": "/IMG/jblflip.webp",
+      "imagem": "/IMG/eletronicos/jblflip.webp",
       "preco": 499.99,
       "quantidade": 10
     }
@@ -102,7 +102,7 @@
       "id": 6,
       "nome": "Teclado Mecânico Redragon",
       "descricao": "Teclado mecânico com switches azuis, retroiluminado e anti-ghosting.",
-      "imagem": "/IMG/teclado.webp",
+      "imagem": "/IMG/informatica/teclado.webp",
       "preco": 250,
       "quantidade": 5
     },
@@ -110,7 +110,7 @@
       "id": 7,
       "nome": "Webcam Logitech",
       "descricao": "Webcam de alta definição, ideal para videoconferências e streamings.",
-      "imagem": "/IMG/webcam.webp",
+      "imagem": "/IMG/informatica/webcam.webp",
       "preco": 150,
       "quantidade": 12
     },
@@ -118,7 +118,7 @@
       "id": 8,
       "nome": "Mouse Logitech G Pro",
       "descricao": "Mouse gamer de alta precisão, com sensor 16K e design ergonômico.",
-      "imagem": "/IMG/mousegpro.webp",
+      "imagem": "/IMG/informatica/mousegpro.webp",
       "preco": 300,
       "quantidade": 8
     },
@@ -126,7 +126,7 @@
       "id": 9,
       "nome": "Placa de Vídeo NVIDIA RTX 3060",
       "descricao": "Placa de vídeo de alto desempenho, ideal para jogos e trabalho com design gráfico.",
-      "imagem": "/IMG/rtx3060.webp",
+      "imagem": "/IMG/informatica/rtx3060.webp",
       "preco": 2200,
       "quantidade": 3
     },
@@ -134,7 +134,7 @@
       "id": 10,
       "nome": "SSD Kingston NVMe 500GB",
       "descricao": "SSD Kingston de alta velocidade, ideal para aumentar o desempenho do seu PC.",
-      "imagem": "/IMG/ssdkingston.webp",
+      "imagem": "/IMG/informatica/ssdkingston.webp",
       "preco": 350,
       "quantidade": 10
     },
@@ -142,7 +142,7 @@
       "id": 11,
       "nome": "Fonte Corsair 650W",
       "descricao": "Fonte de alimentação com 650W, ideal para PCs de alto desempenho.",
-      "imagem": "/IMG/fontecorsair.webp",
+      "imagem": "/IMG/informatica/fontecorsair.webp",
       "preco": 450,
       "quantidade": 7
     },
@@ -150,7 +150,7 @@
       "id": 12,
       "nome": "Headset HyperX Cloud II",
       "descricao": "Headset gamer com som surround 7.1 e microfone com cancelamento de ruído.",
-      "imagem": "/IMG/headsethyperx.webp",
+      "imagem": "/IMG/informatica/headsethyperx.webp",
       "preco": 500,
       "quantidade": 5
     },
@@ -158,7 +158,7 @@
       "id": 13,
       "nome": "Monitor Dell UltraSharp U2720Q",
       "descricao": "Monitor 4K de 27\" com cores precisas, ideal para profissionais de design.",
-      "imagem": "/IMG/monitorultrasharp.webp",
+      "imagem": "/IMG/informatica/monitorultrasharp.webp",
       "preco": 3000,
       "quantidade": 2
     },
@@ -166,7 +166,7 @@
       "id": 14,
       "nome": "Microfone USB Blue Yeti",
       "descricao": "Microfone USB com qualidade de estúdio, perfeito para gravações e transmissões ao vivo.",
-      "imagem": "/IMG/microfoneblue.webp",
+      "imagem": "/IMG/informatica/microfoneblue.webp",
       "preco": 700,
       "quantidade": 6
     },
@@ -174,7 +174,7 @@
       "id": 15,
       "nome": "Roteador TP-Link Archer AX73",
       "descricao": "Roteador Wi-Fi 6 de alta performance, ideal para casas e escritórios grandes.",
-      "imagem": "/IMG/roteador.webp",
+      "imagem": "/IMG/informatica/roteador.webp",
       "preco": 400,
       "quantidade": 9
     },
@@ -182,7 +182,7 @@
       "id": 16,
       "nome": "Mouse Logitech MX Master 3",
       "descricao": "Mouse ergonômico para produtividade, com alta precisão e design confortável.",
-      "imagem": "/IMG/mxmaster3.webp",
+      "imagem": "/IMG/informatica/mxmaster3.webp",
       "preco": 400,
       "quantidade": 4
     },
@@ -190,7 +190,7 @@
       "id": 17,
       "nome": "Teclado Razer Huntsman Mini",
       "descricao": "Teclado mecânico compacto com switches ópticos e retroiluminação RGB.",
-      "imagem": "/IMG/razerhuntsman.webp",
+      "imagem": "/IMG/informatica/razerhuntsman.webp",
       "preco": 550,
       "quantidade": 8
     }
@@ -200,7 +200,7 @@
       "id": 18,
       "nome": "Fritadeira Elétrica Sem Óleo",
       "descricao": "Fritadeira sem óleo, saudável e prática para preparar seus alimentos.",
-      "imagem": "/IMG/fritadeira.webp",
+      "imagem": "/IMG/cozinha/fritadeira.webp",
       "preco": 250,
       "quantidade": 10
     },
@@ -208,7 +208,7 @@
       "id": 19,
       "nome": "Panela de Pressão Elétrica",
       "descricao": "Panela de pressão elétrica, mais rapidez e eficiência no preparo dos alimentos.",
-      "imagem": "/IMG/panela.webp",
+      "imagem": "/IMG/cozinha/panela.webp",
       "preco": 350,
       "quantidade": 8
     },
@@ -216,7 +216,7 @@
       "id": 20,
       "nome": "Cafeteira Elétrica Expresso",
       "descricao": "Cafeteira elétrica para fazer café expresso em casa.",
-      "imagem": "/IMG/cafeteira.webp",
+      "imagem": "/IMG/cozinha/cafeteira.webp",
       "preco": 150,
       "quantidade": 12
     },
@@ -224,7 +224,7 @@
       "id": 21,
       "nome": "Liquidificador Oster 600W",
       "descricao": "Liquidificador com 600W de potência e 3 velocidades.",
-      "imagem": "/IMG/liquidificador.webp",
+      "imagem": "/IMG/cozinha/liquidificador.webp",
       "preco": 199.99,
       "quantidade": 7
     },
@@ -232,7 +232,7 @@
       "id": 22,
       "nome": "Batedeira Arno Deluxe",
       "descricao": "Batedeira com 6 velocidades e design moderno.",
-      "imagem": "/IMG/batedeira.webp",
+      "imagem": "/IMG/cozinha/batedeira.webp",
       "preco": 259.99,
       "quantidade": 6
     },
@@ -240,7 +240,7 @@
       "id": 23,
       "nome": "Processador de Alimentos Philips",
       "descricao": "Processador de alimentos para cortar, fatiar e triturar rapidamente.",
-      "imagem": "/IMG/processador.webp",
+      "imagem": "/IMG/cozinha/processador.webp",
       "preco": 349.99,
       "quantidade": 10
     },
@@ -248,7 +248,7 @@
       "id": 24,
       "nome": "Máquina de Pão Arno",
       "descricao": "Máquina de pão elétrica, prepare pães fresquinhos em casa.",
-      "imagem": "/IMG/maquinadepao.webp",
+      "imagem": "/IMG/cozinha/maquinadepao.webp",
       "preco": 299.99,
       "quantidade": 8
     },
@@ -256,7 +256,7 @@
       "id": 25,
       "nome": "Expositor de Vinho Tramontina",
       "descricao": "Expositor de vinho em aço inox, elegante e moderno.",
-      "imagem": "/IMG/expositorvino.webp",
+      "imagem": "/IMG/cozinha/expositorvino.webp",
       "preco": 599.99,
       "quantidade": 5
     },
@@ -264,7 +264,7 @@
       "id": 26,
       "nome": "Torradeira Elétrica Britânia",
       "descricao": "Torradeira elétrica com 6 níveis de tostagem.",
-      "imagem": "/IMG/torradeira.webp",
+      "imagem": "/IMG/cozinha/torradeira.webp",
       "preco": 109.99,
       "quantidade": 12
     },
@@ -272,7 +272,7 @@
       "id": 27,
       "nome": "Aquecedor Elétrico Cadence",
       "descricao": "Aquecedor elétrico portátil, ideal para aquecer seu ambiente.",
-      "imagem": "/IMG/aquecedor.webp",
+      "imagem": "/IMG/cozinha/aquecedor.webp",
       "preco": 180,
       "quantidade": 5
     },
@@ -280,7 +280,7 @@
       "id": 28,
       "nome": "Máquina de Café Dolce Gusto",
       "descricao": "Máquina de café expresso com cápsulas, fácil de usar e limpar.",
-      "imagem": "/IMG/maquinadecafe.webp",
+      "imagem": "/IMG/cozinha/maquinadecafe.webp",
       "preco": 349.99,
       "quantidade": 4
     },
@@ -288,7 +288,7 @@
       "id": 29,
       "nome": "Mixer Oster 800W",
       "descricao": "Mixer com 800W de potência, perfeito para preparar sopas e smoothies.",
-      "imagem": "/IMG/mixer.webp",
+      "imagem": "/IMG/cozinha/mixer.webp",
       "preco": 169.99,
       "quantidade": 6
     }
@@ -298,7 +298,7 @@
       "id": 30,
       "nome": "Home Theater LG 5.1",
       "descricao": "Home theater 5.1 com som surround e potência de 500W.",
-      "imagem": "/IMG/home_theater.webp",
+      "imagem": "/IMG/audio-e-video/home_theater.webp",
       "preco": 999.99,
       "quantidade": 5
     },
@@ -306,7 +306,7 @@
       "id": 31,
       "nome": "Soundbar Samsung 2.1",
       "descricao": "Soundbar com subwoofer integrado e 2.1 canais de áudio.",
-      "imagem": "/IMG/soundbar.webp",
+      "imagem": "/IMG/audio-e-video/soundbar.webp",
       "preco": 599.99,
       "quantidade": 10
     },
@@ -314,7 +314,7 @@
       "id": 32,
       "nome": "Caixa de Som Bluetooth JBL",
       "descricao": "Caixa de som portátil com conectividade Bluetooth e som de alta qualidade.",
-      "imagem": "/IMG/caixasomjbl.webp",
+      "imagem": "/IMG/audio-e-video/caixasomjbl.webp",
       "preco": 350,
       "quantidade": 8
     },
@@ -322,7 +322,7 @@
       "id": 33,
       "nome": "Projetor Mini",
       "descricao": "Projetor portátil com 1500 lúmens e resolução HD.",
-      "imagem": "/IMG/projetormini.webp",
+      "imagem": "/IMG/audio-e-video/projetormini.webp",
       "preco": 450,
       "quantidade": 6
     },
@@ -330,7 +330,7 @@
       "id": 34,
       "nome": "Televisor Samsung QLED 55\"",
       "descricao": "Smart TV QLED de 55\", imagem com cores vibrantes e som imersivo.",
-      "imagem": "/IMG/televisor.webp",
+      "imagem": "/IMG/audio-e-video/televisor.webp",
       "preco": 3800,
       "quantidade": 3
     },
@@ -338,7 +338,7 @@
       "id": 35,
       "nome": "Fone Bluetooth Sony WH-1000XM4",
       "descricao": "Fone de ouvido Bluetooth com cancelamento de ruído e excelente qualidade sonora.",
-      "imagem": "/IMG/fonesony.webp",
+      "imagem": "/IMG/audio-e-video/fonesony.webp",
       "preco": 1299,
       "quantidade": 4
     },
@@ -346,7 +346,7 @@
       "id": 36,
       "nome": "Camcorder Canon VIXIA HF R800",
       "descricao": "Câmera de vídeo com zoom de 57x, ideal para gravações de alta definição.",
-      "imagem": "/IMG/camcorder.webp",
+      "imagem": "/IMG/audio-e-video/camcorder.webp",
       "preco": 899,
       "quantidade": 3
     },
@@ -354,7 +354,7 @@
       "id": 37,
       "nome": "Amplificador Fender Mustang GT",
       "descricao": "Amplificador de guitarra Fender Mustang GT, som potente e design moderno.",
-      "imagem": "/IMG/amplificador.webp",
+      "imagem": "/IMG/audio-e-video/amplificador.webp",
       "preco": 899.99,
       "quantidade": 4
     },
@@ -362,7 +362,7 @@
       "id": 38,
       "nome": "Microfone de Mesa Samson Meteor",
       "descricao": "Microfone de mesa com som claro e áudio profissional.",
-      "imagem": "/IMG/microfone_meteor.webp",
+      "imagem": "/IMG/audio-e-video/microfone_meteor.webp",
       "preco": 200,
       "quantidade": 8
     },
@@ -370,7 +370,7 @@
       "id": 39,
       "nome": "Receiver Onkyo TX-NR696",
       "descricao": "Receiver para home theater Onkyo TX-NR696 com 7.2 canais e suporte 4K.",
-      "imagem": "/IMG/receiveronkyo.webp",
+      "imagem": "/IMG/audio-e-video/receiveronkyo.webp",
       "preco": 1500,
       "quantidade": 5
     },
@@ -378,7 +378,7 @@
       "id": 40,
       "nome": "Câmera de Segurança Netgear Arlo Pro",
       "descricao": "Câmera de segurança sem fio, resistente às intempéries e com visão noturna.",
-      "imagem": "/IMG/camaraseguranca.webp",
+      "imagem": "/IMG/audio-e-video/camaraseguranca.webp",
       "preco": 700,
       "quantidade": 6
     },
@@ -386,7 +386,7 @@
       "id": 41,
       "nome": "Caixa de Som Bluetooth JBL",
       "descricao": "Caixa de som portátil com conectividade Bluetooth e som de alta qualidade.",
-      "imagem": "/IMG/caixasomjbl.webp",
+      "imagem": "/IMG/audio-e-video/caixasomjbl.webp",
       "preco": 350,
       "quantidade": 8
     }
@@ -396,7 +396,7 @@
       "id": 42,
       "nome": "PlayStation 4 - Bundle",
       "descricao": "PlayStation 4 com 1TB de memória e dois controles inclusos.",
-      "imagem": "/IMG/ps4bundle.webp",
+      "imagem": "/IMG/games/ps4bundle.webp",
       "preco": 1799.99,
       "quantidade": 8
     },
@@ -404,7 +404,7 @@
       "id": 43,
       "nome": "Xbox One S - 1TB",
       "descricao": "Console Xbox One S com 1TB de armazenamento e controle.",
-      "imagem": "/IMG/xboxones.webp",
+      "imagem": "/IMG/games/xboxones.webp",
       "preco": 1499.99,
       "quantidade": 10
     },
@@ -412,7 +412,7 @@
       "id": 44,
       "nome": "Nintendo Switch",
       "descricao": "Console Nintendo Switch, portátil com dock para TV.",
-      "imagem": "/IMG/nintendoswitch.webp",
+      "imagem": "/IMG/games/nintendoswitch.webp",
       "preco": 1999.99,
       "quantidade": 7
     },
@@ -420,7 +420,7 @@
       "id": 45,
       "nome": "Controle Xbox Elite Series 2",
       "descricao": "Controle sem fio Xbox Elite Series 2 com customização avançada.",
-      "imagem": "/IMG/controlexboxelite.webp",
+      "imagem": "/IMG/games/controlexboxelite.webp",
       "preco": 400,
       "quantidade": 4
     },
@@ -428,7 +428,7 @@
       "id": 46,
       "nome": "Game PC Red Dead Redemption 2",
       "descricao": "Jogo de ação e aventura no PC, ambientado no Velho Oeste.",
-      "imagem": "/IMG/reddead.webp",
+      "imagem": "/IMG/games/reddead.webp",
       "preco": 249.99,
       "quantidade": 8
     },
@@ -436,7 +436,7 @@
       "id": 47,
       "nome": "Game PS5 Spider-Man",
       "descricao": "Jogo exclusivo de Spider-Man para PS5, ação e aventura com gráficos impressionantes.",
-      "imagem": "/IMG/spidermanps5.webp",
+      "imagem": "/IMG/games/spidermanps5.webp",
       "preco": 199.99,
       "quantidade": 5
     },
@@ -444,7 +444,7 @@
       "id": 48,
       "nome": "FIFA 23",
       "descricao": "Jogo de futebol FIFA 23 para PS5, Xbox Series X e PC.",
-      "imagem": "/IMG/fifa23.webp",
+      "imagem": "/IMG/games/fifa23.webp",
       "preco": 299.99,
       "quantidade": 9
     },
@@ -452,7 +452,7 @@
       "id": 49,
       "nome": "Controle Nintendo Switch Pro",
       "descricao": "Controle Pro para Nintendo Switch, com design ergonômico.",
-      "imagem": "/IMG/controleswitch.webp",
+      "imagem": "/IMG/games/controleswitch.webp",
       "preco": 250,
       "quantidade": 6
     },
@@ -460,7 +460,7 @@
       "id": 50,
       "nome": "Monitor Acer 27\"",
       "descricao": "Monitor Acer 27\" Full HD, ideal para jogos e produtividade.",
-      "imagem": "/IMG/monitoracer.webp",
+      "imagem": "/IMG/games/monitoracer.webp",
       "preco": 999.99,
       "quantidade": 4
     },
@@ -468,7 +468,7 @@
       "id": 51,
       "nome": "PlayStation 5",
       "descricao": "Console PlayStation 5 com 825GB de armazenamento e design inovador.",
-      "imagem": "/IMG/ps5.webp",
+      "imagem": "/IMG/games/ps5.webp",
       "preco": 4999.99,
       "quantidade": 6
     },
@@ -476,7 +476,7 @@
       "id": 52,
       "nome": "Xbox Series X",
       "descricao": "Console Xbox Series X com 1TB de armazenamento, 4K e gráficos incríveis.",
-      "imagem": "/IMG/xboxseriesx.webp",
+      "imagem": "/IMG/games/xboxseriesx.webp",
       "preco": 4999.99,
       "quantidade": 7
     },
@@ -484,7 +484,7 @@
       "id": 53,
       "nome": "Headset HyperX Cloud II",
       "descricao": "Headset gamer HyperX Cloud II com som surround 7.1 e microfone removível.",
-      "imagem": "/IMG/hyperxcloudii.webp",
+      "imagem": "/IMG/games/hyperxcloudii.webp",
       "preco": 499.99,
       "quantidade": 10
     }
