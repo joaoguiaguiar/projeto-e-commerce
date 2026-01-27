@@ -5,7 +5,7 @@ import AreaLogada from "../pages/AreaLogada";
 import Categoria from "../pages/Categoria";
 import ProductDetails from "../pages/ProductDetails";
 import Favoritos from "../pages/Favoritos";
-import Login from "../pages/Form/login";
+import Login from "../pages/Form/Login";
 import Cadastro from "../pages/Form/Cadastro";
 import SeusDados from "../pages/AreaLogada/Dados";
 import Pedidos from "../pages/AreaLogada/Pedidos";
