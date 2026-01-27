@@ -1,92 +1,115 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
-import Banner from "../../components/Banner";
-import AbCampoTexto from "../../components/CampoTexto";
 import Titulo from "../../components/Titulo";
-import maisVendidos from "../../json/maisVendidos.json";
-import produtosPromossao from "../../json/produtosPromossao.json";
-import categorias from "../../json/categorias.json";
+import maisVendidos from "../../data/json/maisVendidos.json";
 import TagsCategorias from "../../components/TagsCategorias";
 import Newsletter from "../../components/Newsletter";
 import Card from "../../components/Card";
-import ProdutosDestaque from "../../components/ProdutosDestaque";
-import { IProduto } from "../../interface/IProduto";
+import Carrossel from "../../components/Carrossel";
+import Beneficios from "../../components/Beneficios";
 
 const BlocoEstilizado = styled.div`
-  background-color: #021526;
+  background-color: #0C2C55;
   height: 90px;
+  
+  @media (max-width: 768px) {
+    height: 60px;
+  }
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: min(1700px, 95vw);
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 40px 20px;
+  
+  @media (max-width: 1200px) {
+    max-width: 95vw;
+    padding: 30px 15px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 20px 10px;
+    gap: 1.5rem;
+  }
+`;
+
+const ContainerCard = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0 15px;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 768px) {
+    overflow-x: visible;
+  }
+`;
+
+const TituloCentralizadoContainer = styled.div`
+  width: 100%;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const HomePage = () => {
-  const [busca, setBusca] = useState<string>(""); 
-  const [mostrarMaisVendidos, setMostrarMaisVendidos] = useState<boolean>(true); 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 
-  const todosProdutos: IProduto[] = [
-    ...Object.values(categorias).flat(),
-    ...maisVendidos,
-  ].filter((produto, index, self) => self.findIndex((p) => p.id === produto.id) === index);
-
-  const produtosExibir = busca.trim()
-    ? todosProdutos.filter((produto) =>
-        produto.nome.toLowerCase().includes(busca.toLowerCase())
-      )
-    : maisVendidos;
-
-  const handleBlur = () => {
-    setBusca("");
-    setMostrarMaisVendidos(true);
-  };
-
-  const handleFocus = () => {
-    setMostrarMaisVendidos(false);
-  };
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 10);
+  }, []); 
 
   return (
-    <section>
-      <Banner
-        titulo="Produtos que estão bombando"
-        subtitulo="Encontre na nossa estante o que você está procurando e aproveite as ofertas incríveis!"
-      >
-        <form className="buscar">
-          <AbCampoTexto
-            placeholder="O que você está procurando hoje?"
-            value={busca}
-            onChange={(value) => setBusca(value)}
-            onBlur={handleBlur} 
-            onFocus={handleFocus} 
-            darkmode={true}
-            placeholderAlign="center"
-          />
-        </form>
-      </Banner>
+    <section id="home">
+      <Carrossel />
 
-      {mostrarMaisVendidos ? (
-        <div>
-          <Titulo texto="MAIS VENDIDOS" />
+      <Container id="mais-vendidos">
+        <TituloCentralizadoContainer>
+          <Titulo texto="Mais Vendidos" />
+        </TituloCentralizadoContainer>
+
+        <ContainerCard>
           <Card produtos={maisVendidos} />
-        </div>
-      ) : (
-        <div>
-          <Titulo texto="RESULTADOS DA BUSCA" />
-          {produtosExibir.length > 0 ? (
-            <Card produtos={produtosExibir} />
-          ) : (
-            <p className="txtNaoEncontrado">
-              Nenhum item encontrado para "{busca}".
-            </p>
-          )}
-        </div>
-      )}
+        </ContainerCard>
+      </Container>
 
       <BlocoEstilizado />
-      <Titulo texto="PRODUTOS NA PROMOÇÃO" />
-      <ProdutosDestaque produtos={produtosPromossao} />
-      <TagsCategorias />
+
+      <Container id="categorias">
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <Titulo texto="Categorias Mais Buscadas" />
+        </div>
+
+        <TagsCategorias />
+      </Container>
+
       <Newsletter />
-      <hr />
+      <Beneficios id="beneficios" />
     </section>
   );
 };
 
 export default HomePage;
-

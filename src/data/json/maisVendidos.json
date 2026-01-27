@@ -1,0 +1,62 @@
+[
+  {
+    "id": 100,
+    "nome": "Mouse USB gamer multilaser",
+    "descricao": "Mouse Gamer Multilaser MO298: O Mouse Gamer Multilaser MO298 é o aliado perfeito para suas partidas intensas!",
+    "imagem": "/IMG/eletronicos/mause.webp",
+    "preco": 20,
+    "quantidade": 40,
+    "avaliacao": 4.2,
+    "categoria": "eletronicos",
+    "marca": "Multilaser",
+    "vendas": 150
+  },
+  {
+    "id": 101,
+    "nome": "Drone DJI Mavic Mini",
+    "descricao": "Drone compacto e de alta performance, ideal para capturar vídeos e fotos aéreas incríveis.",
+    "imagem": "/IMG/eletronicos/drone.webp",
+    "preco": 200.00,
+    "quantidade": 15,
+    "avaliacao": 4.8,
+    "categoria": "eletronicos",
+    "marca": "DJI",
+    "vendas": 89
+  },
+  {
+    "id": 102,
+    "nome": "Sanduicheira Elétrica",
+    "descricao": "Sanduicheira com chapas antiaderentes, ideal para preparar sanduíches rápidos e saborosos.",
+    "imagem": "/IMG/cozinha/sandicheira.webp",
+    "preco": 100.99,
+    "quantidade": 0,
+    "avaliacao": 4.3,
+    "categoria": "cozinha",
+    "marca": "Britânia",
+    "vendas": 120
+  },
+  {
+    "id": 103,
+    "nome": "Xbox One S",
+    "descricao": "Console de última geração da Microsoft, com gráficos poderosos e uma vasta biblioteca de jogos.",
+    "imagem": "/IMG/games/xboxones.webp",
+    "preco": 349.99,
+    "quantidade": 3,
+    "avaliacao": 4.7,
+    "categoria": "games",
+    "marca": "Microsoft",
+    "vendas": 76
+  },
+  {
+    "id": 104,
+    "nome": "Câmera Digital Canon EOS Rebel T7",
+    "descricao": "Câmera DSLR com excelente qualidade de imagem e gravação de vídeos em Full HD.",
+    "imagem": "/IMG/eletronicos/camera.webp",
+    "preco": 2500.00,
+    "quantidade": 0,
+    "avaliacao": 4.8,
+    "categoria": "eletronicos",
+    "marca": "Canon",
+    "vendas": 45
+  }
+]

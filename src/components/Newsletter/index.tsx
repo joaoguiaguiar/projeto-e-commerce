@@ -1,55 +1,116 @@
-import { useState } from 'react';
-import Alert from 'react-bootstrap/Alert';
+import React, { useState } from 'react';
+import { Mail, Send } from 'lucide-react';
 import './Newsletter.scss';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Newsletter = () => {
-    const [email, setEmail] = useState('');
-    const [showAlert, setShowAlert] = useState(false);
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log("E-mail cadastrado:", email);
-        setShowAlert(true);
+  const handleSubmit = () => {
+    if (!email || !email.includes('@')) {
+      setStatus('error');
+      return;
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    }
+    setStatus('loading');
+    
+    // Simulando envio
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+      setTimeout(() => setStatus('idle'), 3000);
+    }, 1000);
+  };
 
-    return (
-        <section className='Newsletter'>
-            <div>
-                <h6>Fique por dentro das novidades!</h6>
-                <p>Receba promoções exclusivas, lançamentos e ofertas especiais de roupas.</p>
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
+  return (
+    <section className="secao-newsletter">
+      <div className="container-newsletter">
+        <div className="cabecalho-newsletter">
+          <div className="icone-newsletter">
+            <div className="envoltorio-icone">
+              <Mail size={32} />
             </div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="email"
-                    value={email}
-                    onChange={handleChange}
-                    placeholder="Digite seu e-mail"
-                    className="email-input"
-                    required
-                />
-                <button type="submit" className="submit-button">Cadastrar</button>
-            </form>
+          </div>
+          
+          <h2 className="titulo-newsletter">Fique por dentro das novidades!</h2>
+          <p className="descricao-newsletter">
+            Receba em primeira mão nossas ofertas exclusivas, lançamentos e cupons de desconto
+          </p>
+        </div>
 
-            {showAlert && (
-                <Container>
-                    <Alert variant="success" onClose={() => setShowAlert(false)} dismissible className='alert'>
-                        E-mail cadastrado com sucesso!
-                    </Alert>
-                </Container>
-            )}
-        </section>
-    );
+        <div className="container-formulario">
+          <div className="formulario-newsletter">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Digite seu melhor e-mail"
+              disabled={status === 'loading'}
+              className="input-email"
+            />
+            
+            <button
+              onClick={handleSubmit}
+              disabled={status === 'loading'}
+              className={`botao-inscricao ${status === 'loading' ? 'botao-carregando' : ''}`}
+            >
+              {status === 'loading' ? (
+                <>
+                  <div className="spinner-carregamento"></div>
+                  Enviando...
+                </>
+              ) : (
+                <>
+                  <Send size={20} />
+                  Cadastrar
+                </>
+              )}
+            </button>
+          </div>
+
+          {status === 'success' && (
+            <div className="mensagem-feedback mensagem-sucesso">
+              ✓ Cadastro realizado com sucesso! Verifique seu e-mail.
+            </div>
+          )}
+
+          {status === 'error' && (
+            <div className="mensagem-feedback mensagem-erro">
+              ⚠ Por favor, insira um e-mail válido.
+            </div>
+          )}
+        </div>
+
+        <p className="texto-privacidade">
+          🔒 Seus dados estão seguros. Não compartilhamos com terceiros.
+        </p>
+
+        <div className="estatisticas-newsletter">
+          <div className="item-estatistica">
+            <div className="valor-estatistica">15%</div>
+            <div className="rotulo-estatistica">de desconto na primeira compra</div>
+          </div>
+          
+          <div className="item-estatistica">
+            <div className="valor-estatistica">+50mil</div>
+            <div className="rotulo-estatistica">assinantes já cadastrados</div>
+          </div>
+          
+          <div className="item-estatistica">
+            <div className="valor-estatistica">Ofertas</div>
+            <div className="rotulo-estatistica">exclusivas semanais</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Newsletter;

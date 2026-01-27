@@ -1,0 +1,458 @@
+// src/components/Search/Search.scss
+
+:root {
+  --search-primary: #0d3b66;
+  --search-primary-hover: #0a2f52;
+  --search-accent: #10b981;
+  --search-border: #e5e7eb;
+  --search-bg-light: #f9fafb;
+  --search-text: #1f2937;
+  --search-text-muted: #6b7280;
+  --search-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --search-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+// ============ CONTAINER PRINCIPAL ============
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+}
+
+// ============ INPUT DE BUSCA ============
+.search-input-group {
+  position: relative;
+  box-shadow: var(--search-shadow);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  border: 2px solid var(--search-border);
+  border-right: none;
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+  width: 100%;
+
+  &::placeholder {
+    color: var(--search-text-muted);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    background: white;
+  }
+}
+
+// BOTÃO LIMPAR - CORRIGIDO (não duplicado)
+
+
+.search-icon-container {
+  background: var(--search-bg-light);
+  border: 2px solid var(--search-border);
+  border-left: none;
+  padding: 0 1.25rem;
+
+  cursor: pointer;
+}
+
+.search-icon {
+  font-size: 1.25rem;
+  color: var(--search-text-muted);
+}
+
+// ============ DROPDOWN ============
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--search-shadow-lg);
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+  overflow: hidden;
+  border: 1px solid var(--search-border);
+  max-height: 70vh;
+  
+  @media (max-width: 768px) {
+    max-height: 60vh;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-dropdown-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, var(--search-primary) 0%, var(--search-primary-hover) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.search-dropdown-footer {
+  padding: 1rem 1.25rem;
+  background: var(--search-bg-light);
+  border-top: 1px solid var(--search-border);
+  color: var(--search-text-muted);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    color: var(--search-accent);
+  }
+}
+
+// ============ CATEGORIAS (SEM BUSCA) ============
+.search-categories-only {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  
+  @media (max-width: 768px) {
+    max-height: 250px;
+  }
+}
+
+.search-category-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: white;
+  border: 1px solid var(--search-border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  flex-shrink: 0;
+
+  i:first-child {
+    color: var(--search-primary);
+    font-size: 1.1rem;
+  }
+
+  span {
+    flex: 1;
+    color: var(--search-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+
+  .arrow-icon {
+    color: var(--search-text-muted);
+    font-size: 1.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background: var(--search-bg-light);
+    border-color: var(--search-primary);
+    transform: translateX(4px);
+
+    .arrow-icon {
+      transform: translateX(4px);
+      color: var(--search-primary);
+    }
+  }
+}
+
+// ============ DROPDOWN COM RESULTADOS ============
+.search-dropdown-results {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+}
+
+// ============ COLUNA DE PRODUTOS ============
+.search-products-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex: 1;
+  min-height: 200px;
+}
+
+// ============ LISTA DE PRODUTOS ============
+.search-products-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 150px;
+  max-height: 350px;
+  
+  @media (max-width: 768px) {
+    max-height: 300px;
+    padding: 0.75rem;
+  }
+}
+
+.search-product-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem;
+  background: white;
+  border: 1px solid var(--search-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  flex-shrink: 0;
+
+  &:hover {
+    border-color: var(--search-primary);
+    box-shadow: 0 4px 12px rgba(13, 59, 102, 0.1);
+    transform: translateX(4px);
+
+    .search-product-name {
+      color: var(--search-primary);
+    }
+
+    i {
+      color: var(--search-primary);
+      transform: translateX(4px);
+    }
+  }
+
+  > i {
+    color: var(--search-text-muted);
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+  }
+}
+
+.search-product-image {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--search-bg-light);
+  border-radius: 8px;
+  padding: 0.5rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.search-product-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-product-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--search-text);
+  margin: 0 0 0.25rem 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+// PREÇO CORRETO (sem "R$" duplicado)
+.search-product-price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .price-old {
+    font-size: 0.8rem;
+    color: var(--search-text-muted);
+    text-decoration: line-through;
+  }
+
+  .price-new {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--search-accent);
+  }
+}
+
+// ============ ESTADO VAZIO ============
+.search-empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  color: var(--search-text-muted);
+  text-align: center;
+  min-height: 200px;
+
+  i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  p {
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--search-text);
+  }
+
+  span {
+    font-size: 0.875rem;
+  }
+}
+
+// ============ BOTÃO VER TODOS ============
+.search-view-all {
+  width: 100%;
+  padding: 1rem;
+  background: var(--search-primary);
+  color: white;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+
+  &:hover {
+    background: var(--search-primary-hover);
+  }
+
+  i {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover i {
+    transform: translateX(4px);
+  }
+}
+
+// ============ SCROLLBAR CUSTOMIZADA ============
+.search-suggestions-list::-webkit-scrollbar,
+.search-products-list::-webkit-scrollbar,
+.search-categories-only::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-suggestions-list::-webkit-scrollbar-track,
+.search-products-list::-webkit-scrollbar-track,
+.search-categories-only::-webkit-scrollbar-track {
+  background: var(--search-bg-light);
+  border-radius: 3px;
+}
+
+.search-suggestions-list::-webkit-scrollbar-thumb,
+.search-products-list::-webkit-scrollbar-thumb,
+.search-categories-only::-webkit-scrollbar-thumb {
+  background: var(--search-border);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--search-text-muted);
+  }
+}
+
+// Para Firefox
+.search-suggestions-list,
+.search-products-list,
+.search-categories-only {
+  scrollbar-width: thin;
+  scrollbar-color: var(--search-border) var(--search-bg-light);
+}
+
+// ============ SCROLL SUAVE ============
+.search-products-list,
+.search-categories-only {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+// ============ RESPONSIVIDADE ============
+@media (max-width: 768px) {
+  
+  .search-input {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .search-icon-container {
+    padding: 0 1rem;
+  }
+  
+  .search-dropdown {
+    max-height: 60vh;
+  }
+  
+  .search-products-list {
+    max-height: 250px;
+  }
+  
+  .search-product-item {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    
+    .search-product-image {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .search-product-name {
+      font-size: 0.85rem;
+    }
+    
+    .search-product-price {
+      .price-old {
+        font-size: 0.75rem;
+      }
+      
+      .price-new {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}

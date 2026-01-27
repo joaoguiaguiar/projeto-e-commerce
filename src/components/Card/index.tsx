@@ -1,134 +1,119 @@
-import { useState } from "react";
-import styled from "styled-components";
-import estrela from "../../assets/Star 5.png";
-import { useCarrinho } from "../../state/context/CarrinhoContext";
+import { useNavigate } from "react-router-dom";
 import { IProduto } from "../../interface/IProduto";
+import { useCarrinho } from "../../state/context/CarrinhoContext";
+import { useFavoritos } from "../../state/context/FavoritosContext";
+import estrela from "../../assets/Star 5.png";
+import './Card.scss';
 
-import './Card.scss'
-
-const CardEstilizado = styled.div`
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  background-color: #ffffff;
-  width: 250px;
-  height: 430px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  margin: 1rem;
-  text-align: left;
-
-  @media (max-width: 768px) {
-    width: 90%;
-    margin: 0 auto;
-  }
-`;
-
-const ContainerEstrela = styled.figure`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const ContainerBotoes = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding-top: 2rem;
-  align-items: center;
-`;
-
-const ImagemProduto = styled.img`
-  width: 100px;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 1rem;
-`;
-
-const PrecoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`;
-
-const PrecoOriginal = styled.div`
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #ff6500;
-  text-decoration: line-through;
-`;
-
-const PrecoComDesconto = styled.div`
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #2e8b57;
-`;
-
-const Container = styled.div`
-margin-right: 6rem;
-
-@media (max-width: 768px) {
-  margin-right: 11rem;
+interface CardProps {
+  produtos?: IProduto[];  
+  visualizacao?: 'grid' | 'lista';
+  produtosPorCategoria?: {
+    [key: string]: IProduto[];
+  };
 }
 
-
-`
-
-
-const Card = ({ produtos }: { produtos: IProduto[] }) => {
+const Card = ({ produtos, produtosPorCategoria, visualizacao = 'grid' }: CardProps) => {
+  const produtosParaExibir = produtos || 
+    (produtosPorCategoria ? Object.values(produtosPorCategoria).flat() : []);
+  
+  const navigate = useNavigate();
   const { adicionarAoCarrinho } = useCarrinho();
-  const [favoritos, setFavoritos] = useState<Record<number, boolean>>({});
+  const { isFavorito, toggleFavorito } = useFavoritos();
 
-  const alternarFavorito = (id: number) => {
-    setFavoritos((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+  const handleCardClick = (produto: IProduto) => {
+    navigate(`/produto/${produto.id}`);
   };
 
+  const handleComprarClick = (e: React.MouseEvent, produto: IProduto) => {
+    e.stopPropagation();
+    adicionarAoCarrinho(produto);
+  };
+
+  const handleFavoritoClick = (e: React.MouseEvent, produto: IProduto) => {
+    e.stopPropagation();
+    toggleFavorito(produto);
+  };
+
+  // Verifica se há produtos para exibir
+  if (produtosParaExibir.length === 0) {
+    return (
+      <div className="sem-produtos">
+        Nenhum produto disponível
+      </div>
+    );
+  }
+
   return (
-    <section className="MaisVendidos_card">
-      {produtos.map((produto) => {
+    <div className={`card-wrapper ${visualizacao}`}>
+      {produtosParaExibir.map((produto) => {
         const precoComDesconto = (produto.preco * 0.95).toFixed(2);
-        const isFavorito = favoritos[produto.id] || false;
+        const economia = (produto.preco - parseFloat(precoComDesconto)).toFixed(2);
+        const produtoFavorito = isFavorito(produto.id);
 
         return (
-          <CardEstilizado key={produto.id}>
-            <figure>
-              <ImagemProduto src={produto.imagem} alt={`Imagem de ${produto.nome}`} />
-            </figure>
-            <p>{produto.nome}</p>
-           
-           
-           <Container>
-              <ContainerEstrela>
+          <div
+            key={produto.id}
+            className={`card-container ${visualizacao}`}
+            onClick={() => handleCardClick(produto)}
+          >
+            <button
+              className={`favorito-btn ${produtoFavorito ? 'favoritado' : ''}`}
+              onClick={(e) => handleFavoritoClick(e, produto)}
+              title={produtoFavorito ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+            >
+              <i className={produtoFavorito ? "bi bi-heart-fill" : "bi bi-heart"}></i>
+            </button>
+
+            <div className={`imagem-container ${visualizacao}`}>
+              <img
+                src={produto.imagem}
+                alt={`Imagem de ${produto.nome}`}
+                className={`imagem-produto ${visualizacao}`}
+              />
+            </div>
+
+            <div className={`info-container ${visualizacao}`}>
+              <h3 className={`nome-produto ${visualizacao}`}>{produto.nome}</h3>
+              
+              <p className={`descricao ${visualizacao}`}>
+                {produto.descricao || 'Produto de alta qualidade com garantia do fabricante.'}
+              </p>
+              
+              <div className="avaliacao">
                 {[...Array(5)].map((_, index) => (
                   <img key={index} src={estrela} alt="Estrela de avaliação" />
                 ))}
-              </ContainerEstrela>
-              <PrecoContainer>
-                <span>A partir de:</span>
-                <PrecoOriginal>R$ {produto.preco.toFixed(2)}</PrecoOriginal>
-                <PrecoComDesconto>R$ {precoComDesconto}</PrecoComDesconto>
-              </PrecoContainer>
-           </Container>
-           
-            
-           
-           
-           
-            <ContainerBotoes>
-              <button onClick={() => adicionarAoCarrinho(produto)} className="botaoCard">Comprar</button>
-              <div onClick={() => alternarFavorito(produto.id)}>
-                <i className={isFavorito ? "bi bi-heart-fill" : "bi bi-heart"}   style={{ cursor: "pointer" }}
-                ></i>
+                <span>({(produto.avaliacao || 4.5).toFixed(1)})</span>
               </div>
-            </ContainerBotoes>
-          </CardEstilizado>
+
+              <div className={`preco-container ${visualizacao}`}>
+                <span className="texto-a-partir">A partir de:</span>
+                <div className={`preco-original ${visualizacao}`}>
+                  R$ {produto.preco.toFixed(2).replace('.', ',')}
+                </div>
+                <div className={`preco-desconto ${visualizacao}`}>
+                  R$ {precoComDesconto.replace('.', ',')}
+                </div>
+                <span className={`economia ${visualizacao}`}>
+                  Economize R$ {economia.replace('.', ',')}
+                </span>
+              </div>
+
+              <div className={`botoes-container ${visualizacao}`}>
+                <button
+                  className={`botao-comprar ${visualizacao}`}
+                  onClick={(e) => handleComprarClick(e, produto)}
+                >
+                  <i className="bi bi-cart-plus"></i>
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </div>
         );
       })}
-    </section>
+    </div>
   );
 };
 

@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom"
-import BarraNavegacao from "../../components/BarraNavegacao"
 import Rodape from "../../components/Rodape"
+import Header from "../../components/Header"
 
 const PaginaBase = () => {
     return (<main>
-        <BarraNavegacao/>
+        <Header/>
         <Outlet />
         <Rodape />
     </main>)

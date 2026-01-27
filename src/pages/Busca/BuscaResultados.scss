@@ -1,0 +1,54 @@
+// BuscaResultados.scss - ESTILOS MÍNIMOS APENAS PARA O BREADCRUMB
+.breadcrumb-custom {
+  background-color: transparent;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+
+  a {
+    color: #6c757d;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #0d3b66;
+      text-decoration: underline;
+    }
+  }
+
+  .active {
+    color: #0d3b66;
+    font-weight: 500;
+  }
+
+  // Separador
+  a::after {
+    content: ">";
+    margin-left: 0.5rem;
+    color: #6c757d;
+  }
+
+  .active::after {
+    content: none;
+  }
+}
+
+// Estado vazio - usa os mesmos estilos da categoria, apenas adiciona o botão
+.nao-encontrado {
+  .btn-primary {
+    background-color: #0d3b66;
+    border-color: #0d3b66;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: #0a2f52;
+      border-color: #0a2f52;
+    }
+  }
+}

@@ -1,29 +1,463 @@
-.MaisVendidos_card {
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px 5px 20px 5px;
+  scroll-behavior: smooth;
+
+  &.grid {
+    flex-wrap: nowrap;
+  }
+
+  &.lista {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    overflow-x: visible;
+  }
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+
+    &:hover {
+      background: #a8a8a8;
+    }
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+    overflow-x: visible;
+
+    &.grid {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.card-container {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &.grid {
+    padding: 1.25rem;
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem; 
-    justify-content: center; 
-    padding: 1rem;
-    background-color: #e0e0e0;
+    flex-direction: column;
+    gap: 1rem;
+    width: 220px;
+    min-height: 380px;
+    flex: 0 0 auto;
+  }
+
+  &.lista {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    width: 100%;
+    min-height: 200px;
+    flex: 1 1 100%;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #0d3b66;
+
+    .botao-comprar {
+      background: #0a2f52;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      flex-direction: column !important;
+      padding: 1.25rem !important;
+      gap: 1rem !important;
+    }
+
+    &.grid {
+      width: 100% !important;
+      min-height: auto !important;
+    }
+  }
 }
 
-.botaoCard {
-    background-color: #EB9B00;
-    padding: 0.5em 1em;
-    color: white;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.botaoCard:hover {
-    background-color: #FF4500;
+@media (min-width: 769px) {
+  .card-wrapper.grid {
+    flex-wrap: nowrap;
+
+  }
 }
 
 @media (max-width: 768px) {
-    .MaisVendidos_card {
-        flex-direction: column; 
-        align-items: center; 
+  .card-wrapper {
+    flex-direction: column;
+    gap: 15px;
+
+    &.grid {
+      flex-wrap: wrap;
     }
+  }
+
+  .card-container {
+    width: 100% !important;
+    min-height: auto !important;
+    padding: 1.25rem !important;
+  }
+}
+
+
+.favorito-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+
+  i {
+    color: #9ca3af;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  &.favoritado {
+    background: #fee2e2;
+
+    i {
+      color: #ef4444;
+    }
+  }
+
+  &:hover {
+    background: #e5e7eb;
+    transform: scale(1.1);
+
+    i {
+      color: #6b7280;
+    }
+
+    &.favoritado {
+      background: #fecaca;
+
+      i {
+        color: #dc2626;
+      }
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.imagem-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &.grid {
+    width: 100%;
+    height: 160px;
+  }
+
+  &.lista {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      width: 100% !important;
+      height: 160px !important;
+    }
+  }
+}
+
+.imagem-produto {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+
+  &.grid {
+    width: auto;
+    height: auto;
+    max-width: 130px;
+    max-height: 130px;
+  }
+
+  &.lista {
+    width: auto;
+    height: auto;
+    max-width: 180px;
+    max-height: 180px;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      max-width: 130px !important;
+      max-height: 130px !important;
+    }
+  }
+}
+
+.info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  &.grid {
+    height: 100%;
+  }
+
+  &.lista {
+    width: 100%;
+  }
+}
+
+.nome-produto {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-wrap: break-word;
+
+  &.grid {
+    font-size: 1rem;
+  }
+
+  &.lista {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.descricao {
+  font-size: 0.9rem;
+  color: rgb(58, 56, 56) !important;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  &.grid {
+    display: none;
+  }
+
+  &.lista {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+.avaliacao {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+}
+
+.preco-container {
+  &.grid {
+    margin-top: auto;
+  }
+
+  &.lista {
+    margin-top: 0.5rem;
+  }
+}
+
+.texto-a-partir {
+  font-size: 0.75rem;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.preco-original {
+  color: #9ca3af;
+  text-decoration: line-through;
+
+  &.grid {
+    font-size: 0.875rem;
+  }
+
+  &.lista {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.preco-desconto {
+  font-weight: 700;
+  color: #10b981;
+  margin: 0.25rem 0;
+
+  &.grid {
+    font-size: 1.25rem;
+  }
+
+  &.lista {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.economia {
+  color: #10b981;
+  font-weight: 600;
+  background: #f0f9f4;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+  word-wrap: break-word;
+
+  &.grid {
+    font-size: 0.75rem;
+  }
+
+  &.lista {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.botoes-container {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+
+  &.grid {
+    margin-top: 1rem;
+  }
+
+  &.lista {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.botao-comprar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #0d3b66;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  white-space: nowrap;
+
+  &.grid {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  &.lista {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    max-width: 200px;
+  }
+
+  &:hover {
+    background: #0a2f52;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  i {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    &.lista {
+      max-width: 100%;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+    }
+  }
 }

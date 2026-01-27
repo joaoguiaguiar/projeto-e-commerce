@@ -1,26 +1,74 @@
 import { Link } from 'react-router-dom';
-import './TagsCategorias.scss'
+import './TagsCategorias.scss';
 
 const TagsCategorias = () => {
-
-    const tags = [
-        { name: 'Eletrônicos', path: '/categorias/eletronicos' },
-        { name: 'Informática', path: '/categorias/informatica' },
-        { name: 'Cozinha ', path: '/categorias/cozinha' },
-        { name: 'Áudio ', path: '/categorias/audio-e-video' },
-        { name: ' Jogos', path: '/categorias/games' },
+    const categorias = [
+        {
+            name: 'Eletrônicos',
+            path: '/categorias/eletronicos',
+            image: '/IMG/eletronicos/camera.webp'
+        },
+        {
+            name: 'Informática',
+            path: '/categorias/informatica',
+            image: '/IMG/informatica/rtx3060.webp'
+        },
+        {
+            name: 'Cozinha',
+            path: '/categorias/cozinha',
+            image: '/IMG/cozinha/cafeteira.webp'
+        },
+        {
+            name: 'Áudio',
+            path: '/categorias/audio-e-video',
+            image: '/IMG/audio-e-video/caixasomjbl.webp'
+        },
+        {
+            name: 'Games',
+            path: '/categorias/games',
+            image: '/IMG/games/xboxseriesx.webp'
+        },
+        {
+            name: 'Eletrodomésticos',
+            path: '/categorias/eletrodomesticos',
+            image: '/IMG/eletrodomesticos/geladeiraRefregirador.webp'
+        },
     ];
 
     return (
-        <section className="TagsCategorias">
-            <h4>CATEGORIAS MAIS BUSCADAS</h4>
-            <div className="container">
-                {tags.map(tag => 
-                    <Link to={tag.path} key={tag.name} className="tag-button">{tag.name}</Link>
-                )}
+        <section className="secao-tags">
+            <div className="grade-categorias">
+                {categorias.map(categoria => (
+                    <Link 
+                        to={categoria.path} 
+                        key={categoria.name}
+                        className="card-categoria"
+                    >
+                        <div className="container-imagem">
+                            <img
+                                src={categoria.image}
+                                alt={categoria.name}
+                                className="imagem-categoria"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    const container = target.parentElement;
+                                    if (container) {
+                                        container.innerHTML = `
+                                            <div class="fallback-imagem">
+                                                ${categoria.name}
+                                            </div>
+                                        `;
+                                    }
+                                }}
+                            />
+                        </div>
+                        <span className="nome-categoria">{categoria.name}</span>
+                    </Link>
+                ))}
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default TagsCategorias;

@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { IProduto } from "../../interface/IProduto";
 import { IPedido } from "../../interface/IPedido";
+import categorias from "../../data/json/categorias.json";
+import maisVendidos from "../../data/json/maisVendidos.json";
 
 interface CarrinhoContextData {
   itensCarrinho: IProduto[];
@@ -12,6 +14,7 @@ interface CarrinhoContextData {
   gerarPedido: (usuario: { cep: string }) => void;
   excluirPedido: (pedidoId: number) => void; 
   excluirTodosPedidos: () => void;
+  getEstoqueProduto: (id: number) => number; 
 }
 
 const CarrinhoContext = createContext<CarrinhoContextData | undefined>(undefined);
@@ -19,41 +22,144 @@ const CarrinhoContext = createContext<CarrinhoContextData | undefined>(undefined
 export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
   const [itensCarrinho, setItensCarrinho] = useState<IProduto[]>([]);
   const [pedidos, setPedidos] = useState<IPedido[]>([]);
+  const [carregado, setCarregado] = useState(false);
 
+  // CARREGAR Carrinho do localStorage ao iniciar
+  useEffect(() => {
+    const carregarCarrinho = () => {
+      try {
+        const carrinhoSalvo = localStorage.getItem('carrinho');
+        if (carrinhoSalvo) {
+          const parsedCarrinho = JSON.parse(carrinhoSalvo);
+          if (Array.isArray(parsedCarrinho)) {
+            setItensCarrinho(parsedCarrinho);
+          }
+        }
+      } catch (error) {
+        console.log('Erro ao carregar carrinho:', error);
+        localStorage.removeItem('carrinho');
+      }
+    };
+
+    carregarCarrinho();
+  }, []);
+
+  // SALVAR Carrinho no localStorage sempre que mudar
+  useEffect(() => {
+    if (itensCarrinho.length > 0) {
+      try {
+        localStorage.setItem('carrinho', JSON.stringify(itensCarrinho));
+      } catch (error) {
+        console.error('Erro ao salvar carrinho:', error);
+      }
+    } else {
+      localStorage.removeItem('carrinho');
+    }
+  }, [itensCarrinho]);
+
+  // Carregar pedidos
   useEffect(() => {
     const pedidosSalvos = JSON.parse(localStorage.getItem("pedidos") || "[]");
     setPedidos(pedidosSalvos);
+    setCarregado(true);
   }, []);
 
+  // Função para obter o estoque atual de um produto
+  const getEstoqueProduto = (id: number): number => {
+    // Busca em todas as categorias
+    const todosProdutos = [
+      ...categorias.eletronicos,
+      ...categorias.informatica,
+      ...categorias.cozinha,
+      ...categorias["audio-e-video"],
+      ...categorias.games,
+      ...categorias.eletrodomesticos,
+      ...maisVendidos
+    ];
+    
+    const produtoOriginal = todosProdutos.find(p => p.id === id);
+    return produtoOriginal?.quantidade || 0;
+  };
+
   const adicionarAoCarrinho = (item: IProduto) => {
+    // Verifica se o produto está disponível em estoque
+    const estoqueDisponivel = getEstoqueProduto(item.id);
+    
+    if (estoqueDisponivel <= 0) {
+      alert("Produto indisponível no momento! Não é possível adicionar ao carrinho.");
+      return;
+    }
+
     setItensCarrinho((prev) => {
       const itemExistente = prev.find((produto) => produto.id === item.id);
+      
       if (itemExistente) {
+        // Verifica se a quantidade no carrinho + 1 excede o estoque
+        const quantidadeNoCarrinho = itemExistente.quantidade || 0;
+        
+        if (quantidadeNoCarrinho + 1 > estoqueDisponivel) {
+          return prev; // Não altera o carrinho
+        }
+        
         return prev.map((produto) =>
           produto.id === item.id
-            ? { ...produto, quantidade: produto.quantidade + 1 }
+            ? { 
+                ...produto, 
+                quantidade: produto.quantidade + 1,
+                estoqueDisponivel 
+              }
             : produto
         );
       }
-      return [...prev, { ...item, quantidade: 1 }];
+      
+      // Para um novo item
+      return [...prev, { 
+        ...item, 
+        quantidade: 1,
+        estoqueDisponivel 
+      }];
     });
   };
 
   const atualizarQuantidade = (id: number, quantidade: number) => {
-    if (quantidade < 1) return; 
+    if (quantidade < 1) {
+      removerDoCarrinho(id);
+      return;
+    }
+    
+    const estoqueDisponivel = getEstoqueProduto(id);
+    
+    if (quantidade > estoqueDisponivel) {
+      return;
+    }
+    
     setItensCarrinho((prev) =>
       prev.map((produto) =>
-        produto.id === id ? { ...produto, quantidade } : produto
+        produto.id === id 
+          ? { 
+              ...produto, 
+              quantidade,
+              estoqueDisponivel 
+            } 
+          : produto
       )
     );
   };
+  
   const removerDoCarrinho = (id: number) => {
     setItensCarrinho((prev) => prev.filter((item) => item.id !== id));
   };
 
   const gerarPedido = (usuario: { cep: string }) => {
-    if (!usuario.cep) {
+    // Verifica se o CEP é uma string válida
+    if (!usuario.cep || typeof usuario.cep !== 'string' || usuario.cep.trim() === '') {
       alert("Por favor, insira um CEP válido!");
+      return;
+    }
+
+    // Verifica se há itens no carrinho
+    if (itensCarrinho.length === 0) {
+      alert("Carrinho vazio! Adicione produtos antes de finalizar o pedido.");
       return;
     }
 
@@ -73,6 +179,8 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
       localStorage.setItem("pedidos", JSON.stringify(pedidosAtualizados)); 
       return pedidosAtualizados;
     });
+    
+    // LIMPAR Carrinho E SALVAR NOVO ESTADO
     limparCarrinho();
     alert("Pedido adicionado com sucesso!");
   };
@@ -92,6 +200,7 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
 
   const limparCarrinho = () => {
     setItensCarrinho([]);
+    localStorage.removeItem('carrinho'); 
   };
 
   return (
@@ -106,6 +215,7 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
         gerarPedido,
         excluirPedido,
         excluirTodosPedidos,
+        getEstoqueProduto,
       }}
     >
       {children}
