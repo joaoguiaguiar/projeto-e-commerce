@@ -1,8 +1,14 @@
+
 .secao-newsletter {
   background-color: #0C2C55;
   width: 100%;
-  padding: 40px 16px;
+  padding: 30px 16px;
   color: white;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    padding: 40px 16px;
+  }
 }
 
 .container-newsletter {
@@ -12,7 +18,12 @@
 
 .cabecalho-newsletter {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    margin-bottom: 2rem;
+  }
 }
 
 .icone-newsletter {
@@ -22,18 +33,31 @@
 
   .envoltorio-icone {
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
+    padding: 0.875rem;
     border-radius: 50%;
     display: inline-flex;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      padding: 1rem;
+    }
   }
 }
 
 .titulo-newsletter {
-  font-size: 2.25rem;
+  // MOBILE
+  font-size: 1.75rem;
   font-weight: bold;
   margin-bottom: 0.75rem;
   color: white;
+  line-height: 1.2;
   
+  // TABLET
+  @media (min-width: 640px) {
+    font-size: 2.25rem;
+  }
+
+  // DESKTOP
   @media (min-width: 768px) {
     font-size: 2.5rem;
   }
@@ -41,15 +65,28 @@
 
 .descricao-newsletter {
   color: #bfdbfe;
-  font-size: 1.125rem;
+  font-size: 1rem;
   max-width: 42rem;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
   line-height: 1.6;
+  padding: 0 1rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+    margin: 0 auto 2rem;
+    padding: 0;
+  }
 }
 
 .container-formulario {
   max-width: 42rem;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    margin: 0 auto 2rem;
+  }
 }
 
 .formulario-newsletter {
@@ -57,6 +94,7 @@
   flex-direction: column;
   gap: 0.75rem;
   
+  // TABLET
   @media (min-width: 640px) {
     flex-direction: row;
   }
@@ -64,11 +102,17 @@
 
 .input-email {
   flex: 1;
-  padding: 1rem 1.5rem;
+  padding: 0.875rem 1.25rem;
   border-radius: 0.5rem;
   border: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #1f2937;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
   
   &:focus {
     outline: 2px solid rgba(255, 255, 255, 0.5);
@@ -89,17 +133,23 @@
   background-color: white;
   color: #0C2C55;
   font-weight: 600;
-  padding: 1rem 2rem;
+  padding: 0.875rem 1.5rem;
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   transition: all 0.2s;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
   
   &:hover:not(:disabled) {
     background-color: #f3f4f6;
@@ -141,10 +191,17 @@
 
 .mensagem-feedback {
   margin-top: 1rem;
-  padding: 1rem;
+  padding: 0.875rem;
   border-radius: 0.5rem;
   text-align: center;
   animation: entrada-suave 0.3s ease-out;
+  font-size: 0.9rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 
   &.mensagem-sucesso {
     background-color: rgba(34, 197, 94, 0.2);
@@ -173,40 +230,75 @@
 .texto-privacidade {
   text-align: center;
   color: #93c5fd;
-  font-size: 0.875rem;
-  margin-top: 2rem;
+  font-size: 0.8rem;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    padding: 0;
+  }
 }
 
 .estatisticas-newsletter {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  
+  gap: 1.5rem;
+  padding: 0 1rem;
+
+  // DESKTOP
   @media (min-width: 768px) {
+    margin-top: 2.5rem;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  // DESKTOP GRANDE
+  @media (min-width: 992px) {
     gap: 3rem;
   }
 }
 
 .item-estatistica {
-  min-width: 150px;
+  min-width: 120px;
   text-align: center;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    min-width: 150px;
+  }
 }
 
 .valor-estatistica {
-  font-size: 1.875rem;
+  // MOBILE
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: white;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    font-size: 1.875rem;
+  }
 }
 
 .rotulo-estatistica {
   color: #bfdbfe;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    font-size: 0.875rem;
+  }
 }
 
-// Modificadores para temas alternativos
+// ============================================
+// MODIFICADORES PARA TEMAS ALTERNATIVOS
+// ============================================
 .secao-newsletter--claro {
   background-color: #f8fafc;
   color: #1e293b;
@@ -229,13 +321,23 @@
 }
 
 .secao-newsletter--compacto {
-  padding: 40px 16px;
+  padding: 30px 16px;
 
   .titulo-newsletter {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      font-size: 1.75rem;
+    }
   }
 
   .descricao-newsletter {
-    font-size: 1rem;
+    font-size: 0.9rem;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 }

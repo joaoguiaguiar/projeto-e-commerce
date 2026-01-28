@@ -1,14 +1,21 @@
 .frete-calculator-compact {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
   background: white;
-  max-width: 300px;
+  max-width: 100%;
   
-  @media (max-width: 768px) {
-    max-width: 100%;
+  // TABLET
+  @media (min-width: 480px) {
     padding: 0.875rem;
+    margin: 1rem 0;
+  }
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    max-width: 300px;
+    padding: 1rem;
   }
 }
 
@@ -16,13 +23,24 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
   color: #333;
+
+  // DESKTOP
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
   
   i {
     color: #00a650;
-    font-size: 1rem;
+    font-size: 0.9rem;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
   
   span {
@@ -37,12 +55,18 @@
   
   input {
     flex: 1;
-    padding: 0.5rem 0.75rem;
+    padding: 0.375rem 0.5rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     outline: none;
     transition: border 0.2s;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+    }
     
     &:focus {
       border-color: #3483fa;
@@ -62,12 +86,19 @@
     color: white;
     border: none;
     border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s;
-    min-width: 50px;
+    min-width: 45px;
+
+    // DESKTOP
+    @media (min-width: 768px) {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      min-width: 50px;
+    }
     
     &:hover:not(:disabled) {
       background: #2968c8;
@@ -144,31 +175,5 @@
   
   strong {
     font-weight: 600;
-  }
-}
-
-/* Versão mobile mais compacta */
-@media (max-width: 480px) {
-  .frete-calculator-compact {
-    padding: 0.75rem;
-    margin: 0.75rem 0;
-  }
-  
-  .frete-header-compact {
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .frete-input-compact {
-    input {
-      padding: 0.375rem 0.5rem;
-      font-size: 0.85rem;
-    }
-    
-    .btn-ok {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.85rem;
-      min-width: 45px;
-    }
   }
 }

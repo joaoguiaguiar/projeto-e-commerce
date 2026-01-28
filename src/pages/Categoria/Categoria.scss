@@ -1,15 +1,15 @@
 .categoria-container {
   max-width: 1270px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1.75rem 1rem;
   position: relative;
 }
 
 .categoria-content {
   display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: 240px 1fr;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
 
   @media (max-width: 968px) {
     grid-template-columns: 1fr;
@@ -19,8 +19,8 @@
 // ===== SIDEBAR DE FILTROS =====
 .filtros-sidebar {
   background: #f8f9fa;
-  border-radius: 8px;
-  padding: 1.5rem;
+  border-radius: 6px;
+  padding: 1.375rem;
   height: fit-content;
   position: sticky;
   top: 100px;
@@ -31,7 +31,7 @@
   scrollbar-color: #c1c1c1 #f0f0f0;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {
@@ -53,28 +53,28 @@
   }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.0625rem;
     font-weight: 600;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.375rem;
     color: #1a1a1a;
     background: #f8f9fa;
     padding-bottom: 0.5rem;
   }
 
   .filtro-grupo {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.625rem;
+    padding-bottom: 1.375rem;
     border-bottom: 1px solid #e0e0e0;
 
     &:last-of-type {
       border-bottom: none;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.375rem;
     }
 
     h4 {
-      font-size: 0.95rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9375rem;
       color: #333;
     }
   }
@@ -82,17 +82,17 @@
   .filtro-opcoes {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.6875rem;
 
     label {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.8125rem;
       color: #555;
       transition: color 0.2s;
-      padding: 0.25rem 0;
+      padding: 0.1875rem 0;
 
       &:hover {
         color: #000;
@@ -101,8 +101,8 @@
       input[type="checkbox"],
       input[type="radio"] {
         cursor: pointer;
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
         accent-color: #2563eb;
         flex-shrink: 0;
       }
@@ -111,11 +111,11 @@
 
   .limpar-filtros {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.6875rem;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: 5px;
+    font-size: 0.8125rem;
     font-weight: 500;
     color: #666;
     cursor: pointer;
@@ -135,12 +135,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 1rem;
+  padding: 0.625rem 0.9375rem;
   background: #2563eb;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: 5px;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -150,7 +150,7 @@
   }
 
   .filter-icon {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .filter-text {
@@ -205,7 +205,7 @@
 
     h3 {
       margin: 0;
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 600;
       color: #1a1a1a;
     }
@@ -257,7 +257,7 @@
     }
 
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.125rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
       color: #1a1a1a;
@@ -274,7 +274,7 @@
       }
 
       h4 {
-        font-size: 1rem;
+        font-size: 0.9375rem;
         font-weight: 600;
         margin-bottom: 0.75rem;
         color: #333;
@@ -291,7 +291,7 @@
         align-items: center;
         gap: 0.75rem;
         cursor: pointer;
-        font-size: 0.95rem;
+        font-size: 0.875rem;
         color: #555;
         padding: 0.5rem 0;
         transition: color 0.2s;
@@ -303,8 +303,8 @@
         input[type="checkbox"],
         input[type="radio"] {
           cursor: pointer;
-          width: 18px;
-          height: 18px;
+          width: 17px;
+          height: 17px;
           accent-color: #2563eb;
           flex-shrink: 0;
         }
@@ -313,11 +313,11 @@
 
     .limpar-filtros {
       width: 100%;
-      padding: 0.85rem;
+      padding: 0.8125rem;
       background: #fff;
       border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 0.95rem;
+      border-radius: 5px;
+      font-size: 0.875rem;
       font-weight: 500;
       color: #666;
       cursor: pointer;
@@ -339,12 +339,12 @@
 
     .aplicar-filtros {
       width: 100%;
-      padding: 0.85rem;
+      padding: 0.8125rem;
       background: #2563eb;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 1rem;
+      border-radius: 5px;
+      font-size: 0.9375rem;
       font-weight: 500;
       cursor: pointer;
       transition: background-color 0.2s;
@@ -366,19 +366,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 1.375rem;
+    padding-bottom: 0.9375rem;
+    border-bottom: 1px solid #e0e0e0;
     flex-wrap: wrap;
     gap: 1rem;
+    max-width: 908px; // Largura de 4 cards (215px × 4) + gaps (16px × 3)
 
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: flex-start;
+      max-width: 100%;
     }
 
     .resultados-count {
-      font-size: 0.95rem;
+      font-size: 0.9375rem;
       color: #666;
       font-weight: 500;
       
@@ -389,7 +391,7 @@
 
     .controles {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.375rem;
       align-items: center;
       flex-wrap: wrap;
 
@@ -406,7 +408,7 @@
       gap: 0.5rem;
 
       label {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         color: #666;
         white-space: nowrap;
         
@@ -416,10 +418,10 @@
       }
 
       select {
-        padding: 0.5rem 2rem 0.5rem 0.75rem;
+        padding: 0.5rem 1.875rem 0.5rem 0.6875rem;
         border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 0.9rem;
+        border-radius: 5px;
+        font-size: 0.875rem;
         cursor: pointer;
         background: white;
         appearance: none;
@@ -427,7 +429,7 @@
         background-repeat: no-repeat;
         background-position: right 0.5rem center;
         transition: border-color 0.2s;
-        min-width: 150px;
+        min-width: 145px;
 
         &:focus {
           outline: none;
@@ -443,20 +445,20 @@
 
     .visualizacao-toggle {
       display: flex;
-      gap: 0.25rem;
+      gap: 0.1875rem;
       background: #f0f0f0;
-      padding: 0.25rem;
-      border-radius: 6px;
+      padding: 0.1875rem;
+      border-radius: 5px;
 
       button {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
+        padding: 0.5rem 0.6875rem;
         border: none;
         background: transparent;
         cursor: pointer;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         border-radius: 4px;
         transition: all 0.2s;
         color: #666;
@@ -473,11 +475,11 @@
         }
 
         .icon {
-          font-size: 1.1rem;
+          font-size: 1rem;
         }
 
         .text {
-          font-size: 0.85rem;
+          font-size: 0.8125rem;
           white-space: nowrap;
           
           @media (max-width: 768px) {
@@ -493,11 +495,12 @@
 .lista-cards {
   width: 100%;
   min-width: 0;
+  max-width: 908px; // Largura de 4 cards (215px × 4) + gaps (16px × 3)
 
   &.grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 16px;
     
     .card-wrapper {
       display: contents;
@@ -511,7 +514,7 @@
   &.lista {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 16px;
     width: 100%;
     
     .card-wrapper {
@@ -519,19 +522,23 @@
       max-width: 100%;
     }
   }
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 }
 
 // ===== MENSAGEM DE NÃO ENCONTRADO =====
 .nao-encontrado {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 3.75rem 2rem;
   background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 6px;
   width: 100%;
 
   p {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: #333;
     margin-bottom: 0.5rem;
@@ -542,7 +549,7 @@
   }
 
   span {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: #666;
     display: block;
     margin-top: 0.5rem;
@@ -615,7 +622,7 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

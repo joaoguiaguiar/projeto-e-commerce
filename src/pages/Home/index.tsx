@@ -20,7 +20,7 @@ const BlocoEstilizado = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   max-width: min(1700px, 95vw);
   margin: 0 auto;
@@ -80,7 +80,7 @@ const HomePage = () => {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 10);
-  }, []); 
+  }, []);
 
   return (
     <section id="home">

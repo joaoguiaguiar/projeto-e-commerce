@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { IProduto } from "../../interface/IProduto";
 import { useCarrinho } from "../../state/context/CarrinhoContext";
 import { useFavoritos } from "../../state/context/FavoritosContext";
+import { calcularDesconto, formatarPreco } from "../../utils/descontoUtils";
 import estrela from "../../assets/Star 5.png";
 import './Card.scss';
 
@@ -27,6 +28,7 @@ const Card = ({ produtos, produtosPorCategoria, visualizacao = 'grid' }: CardPro
 
   const handleComprarClick = (e: React.MouseEvent, produto: IProduto) => {
     e.stopPropagation();
+    // ✅ Envia o produto com preço ORIGINAL - o desconto será aplicado no CarrinhoContext
     adicionarAoCarrinho(produto);
   };
 
@@ -47,8 +49,8 @@ const Card = ({ produtos, produtosPorCategoria, visualizacao = 'grid' }: CardPro
   return (
     <div className={`card-wrapper ${visualizacao}`}>
       {produtosParaExibir.map((produto) => {
-        const precoComDesconto = (produto.preco * 0.95).toFixed(2);
-        const economia = (produto.preco - parseFloat(precoComDesconto)).toFixed(2);
+        // ✅ USA as funções utilitárias para calcular o desconto
+        const { precoComDesconto, economia } = calcularDesconto(produto.preco);
         const produtoFavorito = isFavorito(produto.id);
 
         return (
@@ -90,13 +92,13 @@ const Card = ({ produtos, produtosPorCategoria, visualizacao = 'grid' }: CardPro
               <div className={`preco-container ${visualizacao}`}>
                 <span className="texto-a-partir">A partir de:</span>
                 <div className={`preco-original ${visualizacao}`}>
-                  R$ {produto.preco.toFixed(2).replace('.', ',')}
+                  R$ {formatarPreco(produto.preco)}
                 </div>
                 <div className={`preco-desconto ${visualizacao}`}>
-                  R$ {precoComDesconto.replace('.', ',')}
+                  R$ {formatarPreco(precoComDesconto)}
                 </div>
                 <span className={`economia ${visualizacao}`}>
-                  Economize R$ {economia.replace('.', ',')}
+                  Economize R$ {formatarPreco(economia)}
                 </span>
               </div>
 

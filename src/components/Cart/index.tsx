@@ -31,7 +31,6 @@ const CarrinhoOffcanvas: FC<CarrinhoOffcanvasProps> = ({ mostrar, onFechar }) =>
             return;
         }
 
-    
         const cepUsuario = usuarioLogado.cep || '';
         
         if (!cepUsuario) {
@@ -89,7 +88,7 @@ const CarrinhoOffcanvas: FC<CarrinhoOffcanvasProps> = ({ mostrar, onFechar }) =>
                                                 <div className="detalhes-item">
                                                     <h6 className="nome-item">{item.nome}</h6>
                                                     <p className="preco-item">
-                                                        R$ {item.preco.toFixed(2)}
+                                                        R$ {item.preco.toFixed(2).replace('.', ',')}
                                                     </p>
                                                     {atingeLimite && (
                                                         <small className="text-warning fw-bold">
@@ -141,8 +140,8 @@ const CarrinhoOffcanvas: FC<CarrinhoOffcanvasProps> = ({ mostrar, onFechar }) =>
 
                             <div className="resumo-carrinho">
                                 <div className="total-container">
-                                    <span className="total-label">Subtotal:</span>
-                                    <span className="total-valor">R$ {totalCarrinho.toFixed(2)}</span>
+                                    <span className="total-label">Total:</span>
+                                    <span className="total-valor">R$ {totalCarrinho.toFixed(2).replace('.', ',')}</span>
                                 </div>
 
                                 <Button

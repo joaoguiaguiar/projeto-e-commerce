@@ -3,6 +3,7 @@ import { IProduto } from "../../interface/IProduto";
 import { IPedido } from "../../interface/IPedido";
 import categorias from "../../data/json/categorias.json";
 import maisVendidos from "../../data/json/maisVendidos.json";
+import { calcularPrecoComDesconto } from "../../utils/descontoUtils";
 
 interface CarrinhoContextData {
   itensCarrinho: IProduto[];
@@ -66,7 +67,6 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para obter o estoque atual de um produto
   const getEstoqueProduto = (id: number): number => {
-    // Busca em todas as categorias
     const todosProdutos = [
       ...categorias.eletronicos,
       ...categorias.informatica,
@@ -82,7 +82,6 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const adicionarAoCarrinho = (item: IProduto) => {
-    // Verifica se o produto está disponível em estoque
     const estoqueDisponivel = getEstoqueProduto(item.id);
     
     if (estoqueDisponivel <= 0) {
@@ -94,13 +93,14 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
       const itemExistente = prev.find((produto) => produto.id === item.id);
       
       if (itemExistente) {
-        // Verifica se a quantidade no carrinho + 1 excede o estoque
         const quantidadeNoCarrinho = itemExistente.quantidade || 0;
         
         if (quantidadeNoCarrinho + 1 > estoqueDisponivel) {
-          return prev; // Não altera o carrinho
+          alert(`Estoque insuficiente! Disponível: ${estoqueDisponivel} unidades`);
+          return prev;
         }
         
+        // ✅ ATUALIZA a quantidade mantendo o preço COM DESCONTO que já estava aplicado
         return prev.map((produto) =>
           produto.id === item.id
             ? { 
@@ -112,9 +112,12 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
         );
       }
       
-      // Para um novo item
+      // ✅ APLICA DESCONTO usando a função utilitária
+      const precoComDesconto = calcularPrecoComDesconto(item.preco);
+      
       return [...prev, { 
-        ...item, 
+        ...item,
+        preco: precoComDesconto, // ✅ Produto vai pro carrinho COM DESCONTO
         quantidade: 1,
         estoqueDisponivel 
       }];
@@ -130,6 +133,7 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
     const estoqueDisponivel = getEstoqueProduto(id);
     
     if (quantidade > estoqueDisponivel) {
+      alert(`Estoque insuficiente! Disponível: ${estoqueDisponivel} unidades`);
       return;
     }
     
@@ -151,13 +155,11 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const gerarPedido = (usuario: { cep: string }) => {
-    // Verifica se o CEP é uma string válida
     if (!usuario.cep || typeof usuario.cep !== 'string' || usuario.cep.trim() === '') {
       alert("Por favor, insira um CEP válido!");
       return;
     }
 
-    // Verifica se há itens no carrinho
     if (itensCarrinho.length === 0) {
       alert("Carrinho vazio! Adicione produtos antes de finalizar o pedido.");
       return;
@@ -180,7 +182,6 @@ export const CarrinhoProvider = ({ children }: { children: ReactNode }) => {
       return pedidosAtualizados;
     });
     
-    // LIMPAR Carrinho E SALVAR NOVO ESTADO
     limparCarrinho();
     alert("Pedido adicionado com sucesso!");
   };
