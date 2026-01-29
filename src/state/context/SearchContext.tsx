@@ -21,7 +21,7 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [produtosFiltrados, setProdutosFiltrados] = useState<IProduto[]>([]);
   const [categoriasFiltradas, setCategoriasFiltradas] = useState<Array<{ nome: string; path: string; qtdProdutos: number }>>([]);
 
-  // Categorias principais (fixas - quando não há busca)
+  // Categorias principais 
   const categoriasSugeridas = [
     'Eletrônicos',
     'Informática', 

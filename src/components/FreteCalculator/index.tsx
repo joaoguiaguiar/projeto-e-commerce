@@ -19,7 +19,6 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
     const cepNumerico = cepInput.replace(/\D/g, '');
     
     if (cepNumerico.length !== 8) {
-      setError('CEP inválido');
       return null;
     }
 
@@ -27,9 +26,15 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
       const response = await fetch(`https://viacep.com.br/ws/${cepNumerico}/json/`);
       const dados = await response.json();
       
+      // MESMO SE O VIACEP NÃO ENCONTRAR, AINDA VAMOS SIMULAR O FRETE
+      // Em uma loja real, você teria sua própria base de fretes
       if (dados.erro) {
-        setError('CEP não encontrado');
-        return null;
+        console.log('CEP não encontrado no ViaCEP, mas vamos simular frete mesmo assim');
+        // Retorna um endereço genérico para simulação
+        return {
+          cidade: 'Cidade não identificada',
+          estado: 'UF'
+        };
       }
       
       return {
@@ -37,38 +42,61 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
         estado: dados.uf
       };
     } catch (err) {
-      setError('Erro ao buscar CEP');
-      return null;
+      console.log('Erro na API, mas vamos simular frete mesmo assim');
+      // Mesmo com erro na API, simula frete
+      return {
+        cidade: 'Cidade não identificada',
+        estado: 'UF'
+      };
     }
   };
 
   const calcularFrete = async () => {
     if (!cep || cep.replace(/\D/g, '').length !== 8) {
-      setError('Digite um CEP válido');
+      setError('Digite um CEP válido com 8 dígitos');
       return;
     }
 
     setLoading(true);
     setError(null);
+    setFreteInfo(null);
 
     try {
-      // Simulação de busca
+      // Tenta buscar endereço, mas mesmo se falhar, continua
       const enderecoData = await buscarEnderecoPorCEP(cep);
       
-      if (!enderecoData) {
-        setLoading(false);
-        return;
-      }
-
-      // Simulação de cálculo
+      // Simulação de cálculo (500ms)
       await new Promise(resolve => setTimeout(resolve, 500));
       
-      // Valores mais realistas
-      const valoresFrete = [
-        { prazo: '3-5 dias', valor: 15.90 },
-        { prazo: '5-8 dias', valor: 12.50 },
-        { prazo: '8-12 dias', valor: 9.90 }
-      ];
+      // Valores de frete baseados no CEP (região)
+      const cepNum = parseInt(cep.replace(/\D/g, ''));
+      
+      // Cálculo baseado na região do CEP (primeiro dígito)
+      const primeiroDigito = parseInt(cep.charAt(0));
+      
+      let valoresFrete;
+      
+      // Região Sudeste (0-3) - São Paulo, Rio, Minas, Espírito Santo
+      if (primeiroDigito >= 0 && primeiroDigito <= 3) {
+        valoresFrete = [
+          { prazo: '2-4 dias', valor: 12.90 },
+          { prazo: '5-7 dias', valor: 9.90 }
+        ];
+      }
+      // Região Sul (8-9) - Paraná, Santa Catarina, Rio Grande do Sul
+      else if (primeiroDigito >= 8 && primeiroDigito <= 9) {
+        valoresFrete = [
+          { prazo: '4-6 dias', valor: 16.90 },
+          { prazo: '7-10 dias', valor: 13.50 }
+        ];
+      }
+      // Demais regiões (Nordeste, Centro-Oeste, Norte)
+      else {
+        valoresFrete = [
+          { prazo: '6-9 dias', valor: 19.90 },
+          { prazo: '10-14 dias', valor: 15.90 }
+        ];
+      }
       
       const freteEscolhido = valoresFrete[Math.floor(Math.random() * valoresFrete.length)];
       
@@ -79,29 +107,40 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
       };
 
       setFreteInfo(info);
+      console.log('Frete calculado com sucesso:', info);
 
     } catch (err) {
-      setError('Erro ao calcular frete');
+      setError('Erro ao calcular frete. Tente novamente.');
+      console.error('Erro:', err);
     } finally {
       setLoading(false);
     }
   };
 
-  const formatarCEP = (value: string) => {
-    const numeros = value.replace(/\D/g, '');
-    if (numeros.length <= 5) return numeros;
-    return `${numeros.slice(0, 5)}-${numeros.slice(5, 8)}`;
-  };
-
   const handleCEPChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedCEP = formatarCEP(e.target.value);
-    setCep(formattedCEP);
+    const value = e.target.value;
+    
+    // Remove tudo que não for número
+    const numeros = value.replace(/\D/g, '');
+    
+    // Limita a 8 dígitos
+    const cepNumerico = numeros.slice(0, 8);
+    
+    setCep(cepNumerico);
     if (error) setError(null);
+    if (freteInfo) setFreteInfo(null); // Limpa frete ao digitar novo CEP
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      calcularFrete();
+    }
+  };
+
+  // Calcula automaticamente quando CEP tem 8 dígitos
+  const handleBlur = () => {
+    if (cep.replace(/\D/g, '').length === 8 && !loading && !freteInfo) {
       calcularFrete();
     }
   };
@@ -119,8 +158,9 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
           value={cep}
           onChange={handleCEPChange}
           onKeyPress={handleKeyPress}
-          placeholder="00000-000"
-          maxLength={9}
+          onBlur={handleBlur}
+          placeholder="00000000"
+          maxLength={8}
           className={error ? 'error' : ''}
         />
         <button 
@@ -132,7 +172,12 @@ const FreteCalculator = ({ cepDefault = '' }: FreteCalculatorProps) => {
         </button>
       </div>
       
-      {error && <span className="error-message-compact">{error}</span>}
+      {error && (
+        <div className="error-message-compact">
+          <i className="bi bi-exclamation-circle"></i>
+          {error}
+        </div>
+      )}
 
       {freteInfo && (
         <div className="frete-result-compact">

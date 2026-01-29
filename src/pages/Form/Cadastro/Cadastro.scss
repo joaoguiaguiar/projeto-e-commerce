@@ -131,6 +131,7 @@ $breakpoint-xl: 1200px;
           }
         }
         
+        // Mensagem de erro (vermelho)
         .auth-error {
           display: block;
           color: #dc3545;
@@ -142,6 +143,21 @@ $breakpoint-xl: 1200px;
           background-color: #f8d7da;
           border-radius: 6px;
           border: 1px solid #f5c6cb;
+        }
+        
+        // Mensagem de sucesso (verde)
+        .success-message {
+          display: block;
+          color: #155724 !important;
+          font-size: 0.8125rem;
+          margin-top: 0;
+          margin-bottom: 1rem;
+          text-align: center;
+          padding: 0.5rem;
+          background-color: #d4edda !important;
+          border-radius: 6px;
+          border: 1px solid #c3e6cb !important;
+          font-weight: 600;
         }
         
         .btn-cadastro {
@@ -321,7 +337,8 @@ $breakpoint-xl: 1200px;
             }
           }
           
-          .auth-error {
+          .auth-error,
+          .success-message {
             font-size: 0.84375rem;
             margin-bottom: 1.25rem;
             padding: 0.625rem;
@@ -385,9 +402,12 @@ $breakpoint-xl: 1200px;
             gap: 1.25rem;
           }
           
+          // Nome, Endereço e Senha ocupam 2 colunas
           .form-group:nth-child(1),
+          .form-group:nth-child(4),
           .form-group:nth-child(5),
-          .auth-error {
+          .auth-error,
+          .success-message {
             grid-column: span 2;
           }
           
@@ -434,6 +454,21 @@ $breakpoint-xl: 1200px;
         .cadastro-form {
           padding: 2.5rem 2rem;
           
+          .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+          }
+          
+          // Nome, Endereço e Senha ocupam 2 colunas
+          .form-group:nth-child(1),
+          .form-group:nth-child(4),
+          .form-group:nth-child(5),
+          .auth-error,
+          .success-message {
+            grid-column: span 2;
+          }
+          
           .form-group {
             margin-bottom: 1.5rem;
             
@@ -461,7 +496,8 @@ $breakpoint-xl: 1200px;
             }
           }
           
-          .auth-error {
+          .auth-error,
+          .success-message {
             font-size: 0.875rem;
             margin-bottom: 1.25rem;
             padding: 0.75rem;
@@ -511,7 +547,6 @@ $breakpoint-xl: 1200px;
     }
   }
   
-  // Extra Large Desktop (1200px+)
   @media (min-width: $breakpoint-xl) {
     .cadastro-container {
       max-width: 850px;

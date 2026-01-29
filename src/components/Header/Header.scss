@@ -6,7 +6,6 @@
     z-index: 1000;
     transition: all 0.3s ease;
 
-    // MOBILE: Padding aumenta conforme a tela cresce
     @media (min-width: 576px) {
         padding: 12px 0;
     }
@@ -22,7 +21,6 @@
         gap: 10px;
         flex-wrap: wrap;
 
-        // TABLETS: Aumenta o gap
         @media (min-width: 576px) {
             gap: 15px;
         }
@@ -31,19 +29,16 @@
             gap: 2rem;
         }
 
-        // DESKTOP MÉDIO: Layout mais espaçado
         @media (min-width: 992px) {
             flex-wrap: nowrap;
             gap: 3rem;
         }
 
-        // DESKTOP GRANDE: Gap máximo
         @media (min-width: 1200px) {
             gap: 5rem;
         }
     }
 
-    // ÁREA DO LOGO
     .area-logo {
         display: flex;
         align-items: center;
@@ -57,7 +52,6 @@
             object-fit: contain;
             border-radius: 3rem;
 
-            // Cresce conforme a tela aumenta
             @media (min-width: 480px) {
                 height: 50px;
             }
@@ -80,21 +74,17 @@
             letter-spacing: -0.5px;
             white-space: nowrap;
 
-            // Aumenta no desktop
             @media (min-width: 992px) {
                 font-size: 24px;
             }
         }
     }
 
-    // ÁREA DE BUSCA
     .area-busca {
-        // MOBILE: Ocupa linha inteira
         order: 3;
         width: 100%;
         margin: 15px 0 0 0;
 
-        // TABLET: Volta para o fluxo normal
         @media (min-width: 768px) {
             order: initial;
             flex: 1;
@@ -103,20 +93,19 @@
             margin: 0 20px;
         }
 
-        // DESKTOP MÉDIO
         @media (min-width: 992px) {
             max-width: 450px;
         }
 
-        // DESKTOP GRANDE
         @media (min-width: 1200px) {
             max-width: 500px;
         }
     }
 
-    // ÁREA DE NAVEGAÇÃO
     .area-navegacao {
         flex-shrink: 0;
+        display: flex;
+        align-items: center;
 
         .lista-icones {
             display: flex;
@@ -126,7 +115,6 @@
             padding: 0;
             gap: 12px;
 
-            // Aumenta o gap progressivamente
             @media (min-width: 480px) {
                 gap: 15px;
             }
@@ -151,7 +139,8 @@
             .botao-categorias {
                 display: flex;
                 align-items: center;
-                padding: 8px 12px;
+                justify-content: center;
+                padding: 10px;
                 background-color: rgba(255, 255, 255, 0.1);
                 border-radius: 8px;
                 cursor: pointer;
@@ -161,6 +150,8 @@
                 font-size: 15px;
                 white-space: nowrap;
                 border: none;
+                min-width: 40px;
+                height: 40px;
 
                 &:hover {
                     background-color: rgba(255, 255, 255, 0.2);
@@ -171,7 +162,6 @@
                     font-size: 20px;
                     margin-right: 0;
 
-                    // Desktop: adiciona espaço e mostra texto
                     @media (min-width: 768px) {
                         font-size: 18px;
                         margin-right: 6px;
@@ -179,10 +169,8 @@
                 }
 
                 .texto-categorias {
-                    // MOBILE: Oculto
                     display: none;
 
-                    // DESKTOP: Visível
                     @media (min-width: 768px) {
                         display: inline;
                     }
@@ -190,12 +178,12 @@
 
                 @media (min-width: 768px) {
                     padding: 8px 16px;
+                    min-width: auto;
+                    height: auto;
                 }
             }
 
-            // DROPDOWN DE CATEGORIAS
             .dropdown-categorias {
-                // MOBILE: Dropdown fixo centralizado
                 position: fixed;
                 top: 70px;
                 left: 50%;
@@ -209,7 +197,6 @@
                 z-index: 1001;
                 overflow: hidden;
 
-                // DESKTOP: Dropdown absoluto
                 @media (min-width: 768px) {
                     position: absolute;
                     top: 100%;
@@ -292,7 +279,6 @@
                     }
                 }
 
-                // Seta do dropdown (apenas desktop)
                 &::before {
                     display: none;
 
@@ -301,18 +287,18 @@
                         display: block;
                         position: absolute;
                         top: -8px;
-                        right: 20px;
+                        left: 20px;
                         width: 0;
                         height: 0;
                         border-left: 8px solid transparent;
                         border-right: 8px solid transparent;
-                        border-bottom: 8px solid #0C2C55;
+                        border-bottom: 8px solid white;
                     }
                 }
             }
         }
 
-        // USUÁRIO LOGADO
+        // LOGADO
         .item-usuario-logado {
             position: relative;
             cursor: pointer;
@@ -320,36 +306,42 @@
             .usuario-logado-wrapper {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 gap: 0;
+                background: transparent;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                min-width: 40px;
+                height: 40px;
 
                 @media (min-width: 768px) {
                     gap: 12px;
+                    padding: 8px 16px;
+                    min-width: auto;
+                    height: auto;
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+
+                &:hover {
+                    @media (min-width: 768px) {
+                        background-color: rgba(255, 255, 255, 0.2);
+                    }
                 }
 
                 .avatar-usuario {
-                    width: 32px;
-                    height: 32px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    border: 2px solid rgba(255, 255, 255, 0.3);
-                    transition: all 0.3s ease;
+                    font-size: 1.3rem;
 
                     @media (min-width: 768px) {
-                        width: 40px;
-                        height: 40px;
-                    }
-
-                    &:hover {
-                        border-color: rgba(255, 255, 255, 0.8);
-                        transform: scale(1.05);
+                        font-size: 1.4rem;
                     }
                 }
 
                 .info-usuario-header {
-                    // MOBILE: Oculto
                     display: none;
 
-                    // DESKTOP: Visível
                     @media (min-width: 768px) {
                         display: flex;
                         flex-direction: column;
@@ -388,14 +380,9 @@
                         transition: transform 0.3s ease;
                     }
                 }
-
-                &:hover .icone-dropdown {
-                    transform: rotate(180deg);
-                }
             }
 
             .menu-usuario-logado {
-                // MOBILE: Menu fixo centralizado
                 position: fixed;
                 top: 70px;
                 left: 50%;
@@ -409,7 +396,6 @@
                 z-index: 1000;
                 overflow: hidden;
 
-                // DESKTOP: Menu absoluto
                 @media (min-width: 768px) {
                     position: absolute;
                     top: 100%;
@@ -502,9 +488,17 @@
                 display: flex;
                 gap: 0;
                 align-items: center;
+                padding: 10px;
+                min-width: 40px;
+                height: 40px;
+                justify-content: center;
 
                 @media (min-width: 768px) {
                     gap: 1rem;
+                    padding: 0;
+                    min-width: auto;
+                    height: auto;
+                    justify-content: flex-start;
                 }
 
                 .icone-nav {
@@ -517,10 +511,8 @@
                 }
 
                 .texto-usuario {
-                    // MOBILE: Oculto
                     display: none;
 
-                    // DESKTOP: Visível
                     @media (min-width: 768px) {
                         display: block;
                     }
@@ -539,7 +531,6 @@
             }
 
             .menu-usuario {
-                // MOBILE: Menu fixo centralizado
                 position: fixed;
                 top: 70px;
                 left: 50%;
@@ -553,7 +544,6 @@
                 z-index: 1000;
                 overflow: hidden;
 
-                // DESKTOP: Menu absoluto
                 @media (min-width: 768px) {
                     position: absolute;
                     top: 100%;
@@ -649,10 +639,32 @@
         .item-icone {
             cursor: pointer;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             .icone-wrapper {
                 position: relative;
-                display: inline-block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 40px;
+                height: 40px;
+                padding: 10px;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+
+                @media (min-width: 768px) {
+                    min-width: auto;
+                    height: auto;
+                    padding: 0;
+                }
+
+                &:hover {
+                    @media (min-width: 768px) {
+                        transform: translateY(-2px);
+                    }
+                }
 
                 .icone-nav {
                     font-size: 1.3rem;
@@ -678,6 +690,11 @@
                     align-items: center;
                     justify-content: center;
                     padding: 0 4px;
+
+                    @media (min-width: 768px) {
+                        top: -8px;
+                        right: -8px;
+                    }
                 }
             }
         }

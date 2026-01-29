@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../state/hook/useAuth ';
+import { useAutenticacao } from '../../../state/hook/useAuth ';
 import './Login.scss';
 
 const loginSchema = z.object({
@@ -15,7 +15,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signin } = useAuth();
+  const { entrar } = useAutenticacao();
 
   const [authError, setAuthError] = useState<string | null>(null);
 
@@ -38,7 +38,7 @@ const Login = () => {
   }, []); 
 
   const onSubmit = async (data: LoginFormData) => {
-    const mensagem = await signin(data.email, data.senha);
+    const mensagem = await entrar(data.email, data.senha);
 
     if (mensagem) {
       setAuthError(mensagem); 

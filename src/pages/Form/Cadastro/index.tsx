@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../state/hook/useAuth ';
+import { useAutenticacao } from '../../../state/hook/useAuth ';
 import { useRecoilState } from 'recoil';
 import { cepAtom, enderecoAtom } from '../../../state/authState';
 import { useEffect, useState } from 'react';
@@ -20,12 +20,12 @@ type CadastroFormData = z.infer<typeof cadastroSchema>;
 
 const Cadastro = () => {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { cadastrar } = useAutenticacao();
 
   const [cep, setCep] = useRecoilState(cepAtom);
   const [endereco, setEndereco] = useRecoilState(enderecoAtom);
-
   const [authError, setAuthError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const {
     register,
@@ -47,7 +47,7 @@ const Cadastro = () => {
     setTimeout(() => {
       window.scrollTo(0, 0);
     }, 10);
-  }, []); 
+  }, []);
 
   const buscarEnderecoPorCep = async (cep: string) => {
     const cepNumerico = cep.replace(/\D/g, '');
@@ -79,10 +79,14 @@ const Cadastro = () => {
   }, [cepValue]);
 
   const onSubmit = async (data: CadastroFormData) => {
+    // Limpar mensagens anteriores
+    setAuthError(null);
+    setSuccessMessage(null);
+
     setCep(data.cep);
     setEndereco(data.endereco);
 
-    const mensagem = await signup(
+    const mensagem = await cadastrar(
       data.nome,
       data.email,
       data.cep,
@@ -95,8 +99,16 @@ const Cadastro = () => {
       return;
     }
 
-    setAuthError(null);
-    navigate('/login');
+    // Mostrar mensagem de sucesso
+    setSuccessMessage('Cadastro realizado com sucesso!');
+    
+    // Log para debug
+    console.log(' SUCESSO! Usando classe: success-message');
+    
+    // Redirecionar após 2 segundos
+    setTimeout(() => {
+      navigate('/login');
+    }, 2000);
   };
 
   return (
@@ -112,98 +124,108 @@ const Cadastro = () => {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="cadastro-form">
-            <div className="form-group">
-              <label htmlFor="nome">Nome Completo</label>
-              <div className="input-wrapper">
-                <i className="bi bi-person"></i>
-                <input
-                  {...register('nome')}
-                  type="text"
-                  id="nome"
-                  placeholder="Seu nome completo"
-                  className={errors.nome ? 'error' : ''}
-                />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="nome">Nome Completo</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-person"></i>
+                  <input
+                    {...register('nome')}
+                    type="text"
+                    id="nome"
+                    placeholder="Seu nome completo"
+                    className={errors.nome ? 'error' : ''}
+                  />
+                </div>
+                {errors.nome && (
+                  <span className="error-message">{errors.nome.message}</span>
+                )}
               </div>
-              {errors.nome && (
-                <span className="error-message">{errors.nome.message}</span>
-              )}
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <div className="input-wrapper">
-                <i className="bi bi-envelope"></i>
-                <input
-                  {...register('email')}
-                  type="email"
-                  id="email"
-                  placeholder="seu@email.com"
-                  className={errors.email ? 'error' : ''}
-                />
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-envelope"></i>
+                  <input
+                    {...register('email')}
+                    type="email"
+                    id="email"
+                    placeholder="seu@email.com"
+                    className={errors.email ? 'error' : ''}
+                  />
+                </div>
+                {errors.email && (
+                  <span className="error-message">{errors.email.message}</span>
+                )}
               </div>
-              {errors.email && (
-                <span className="error-message">{errors.email.message}</span>
-              )}
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="cep">CEP</label>
-              <div className="input-wrapper">
-                <i className="bi bi-mailbox"></i>
-                <input
-                  {...register('cep')}
-                  type="text"
-                  id="cep"
-                  placeholder="00000000"
-                  maxLength={8}
-                  className={errors.cep ? 'error' : ''}
-                />
+              <div className="form-group">
+                <label htmlFor="cep">CEP</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-mailbox"></i>
+                  <input
+                    {...register('cep')}
+                    type="text"
+                    id="cep"
+                    placeholder="00000000"
+                    maxLength={8}
+                    className={errors.cep ? 'error' : ''}
+                  />
+                </div>
+                {errors.cep && (
+                  <span className="error-message">{errors.cep.message}</span>
+                )}
               </div>
-              {errors.cep && (
-                <span className="error-message">{errors.cep.message}</span>
-              )}
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="endereco">Endereço</label>
-              <div className="input-wrapper">
-                <i className="bi bi-geo-alt"></i>
-                <input
-                  {...register('endereco')}
-                  type="text"
-                  id="endereco"
-                  placeholder="Endereço será preenchido automaticamente"
-                  className={errors.endereco ? 'error' : ''}
-                />
+              <div className="form-group">
+                <label htmlFor="endereco">Endereço</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-geo-alt"></i>
+                  <input
+                    {...register('endereco')}
+                    type="text"
+                    id="endereco"
+                    placeholder="Endereço será preenchido automaticamente"
+                    className={errors.endereco ? 'error' : ''}
+                  />
+                </div>
+                {errors.endereco && (
+                  <span className="error-message">
+                    {errors.endereco.message}
+                  </span>
+                )}
               </div>
-              {errors.endereco && (
-                <span className="error-message">
-                  {errors.endereco.message}
-                </span>
-              )}
-            </div>
 
-            <div className="form-group">
-              <label htmlFor="senha">Senha</label>
-              <div className="input-wrapper">
-                <i className="bi bi-lock"></i>
-                <input
-                  {...register('senha')}
-                  type="password"
-                  id="senha"
-                  placeholder="••••••••"
-                  className={errors.senha ? 'error' : ''}
-                />
+              <div className="form-group">
+                <label htmlFor="senha">Senha</label>
+                <div className="input-wrapper">
+                  <i className="bi bi-lock"></i>
+                  <input
+                    {...register('senha')}
+                    type="password"
+                    id="senha"
+                    placeholder="••••••••"
+                    className={errors.senha ? 'error' : ''}
+                  />
+                </div>
+                {errors.senha && (
+                  <span className="error-message">{errors.senha.message}</span>
+                )}
               </div>
-              {errors.senha && (
-                <span className="error-message">{errors.senha.message}</span>
-              )}
             </div>
 
             {authError && (
-              <p className="error-message auth-error">
+              <div className="auth-error">
+                <i className="bi bi-x-circle-fill me-2"></i>
                 {authError}
-              </p>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="success-message">
+                <i className="bi bi-check-circle-fill me-2"></i>
+                {successMessage}
+              </div>
             )}
 
             <button

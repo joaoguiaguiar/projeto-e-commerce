@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { useFavoritos } from '../../state/context/FavoritosContext';
 import { useCarrinho } from '../../state/context/CarrinhoContext';
-import { useAuth } from '../../state/hook/useAuth ';
+import { useAutenticacao } from '../../state/hook/useAuth ';
 import SearchBar from './Search/index';
 import CarrinhoOffcanvas from '../Cart';
 
@@ -19,10 +19,10 @@ const Header = () => {
 
     const { favoritos } = useFavoritos();
     const { itensCarrinho } = useCarrinho();
-    const { auth, signout } = useAuth();
+    const { auth, sair } = useAutenticacao();
     const navigate = useNavigate();
 
-    const usuarioLogado = auth.user;
+    const usuarioLogado = auth?.user || null;
     const totalItensCarrinho = itensCarrinho.reduce((acc, item) => acc + item.quantidade, 0);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const Header = () => {
     };
 
     const handleLogout = () => {
-        signout();
+        sair();
         setMostrarMenuUsuario(false);
         navigate('/');
     };
@@ -183,16 +183,20 @@ const Header = () => {
                             {usuarioLogado ? (
                                 <>
                                     <li className="item-icone item-usuario-logado" ref={menuRef}>
-                                        <button
-                                            className="botao-usuario-logado"
+                                        <div 
+                                            className="usuario-logado-wrapper"
                                             onClick={() => setMostrarMenuUsuario(!mostrarMenuUsuario)}
                                         >
-                                            <i className="bi bi-person-fill"></i>
-                                            <span className="nome-usuario-desktop">{usuarioLogado.nome.split(' ')[0]}</span>
-                                        </button>
+                                            <i className="bi bi-person-fill avatar-usuario"></i>
+                                            <div className="info-usuario-header">
+                                                <p className="texto-ola">Olá</p>
+                                                <p className="nome-usuario">{usuarioLogado.nome.split(' ')[0]}</p>
+                                            </div>
+                                            <i className="bi bi-chevron-down icone-dropdown"></i>
+                                        </div>
 
                                         {mostrarMenuUsuario && (
-                                            <div className="dropdown-usuario-logado">
+                                            <div className="menu-usuario-logado">
                                                 <div className="info-usuario">
                                                     <p className="nome-completo">Olá, {usuarioLogado.nome}!</p>
                                                 </div>

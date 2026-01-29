@@ -1,21 +1,83 @@
-# Sobre 
+# 📦 Projeto simulação de E-commerce (Refatoração)
 
-Este projeto é inspirado em um e-commerce que estou desenvolvendo como parte do meu aprendizado contínuo. A ideia é continuar aprimorando esse projeto, integrando um banco de dados e adicionando novas funcionalidades no futuro. O projeto conta com funcionalidades essenciais para um e-commerce, como autenticação de usuário, carrinho de compras, barra de navegação e um sistema CRUD.
+Este projeto é inspirado em um e-commerce que estou desenvolvendo como parte do meu aprendizado contínuo em desenvolvimento web.  
+Esta versão representa uma **refatoração do projeto original**, onde o foco foi melhorar a arquitetura, o design e adicionar novas funcionalidades.
 
-Utilizei o Local Storage para autenticação, garantindo que os dados sejam validados diretamente no navegador. Para o gerenciamento de estado da aplicação, explorei o Recoil e o React Context, o que permite organizar fluxos globais de dados, como os relacionados à barra de navegação, carrinho de compras e autenticação. 
+O layout foi totalmente repensado, seguindo uma abordagem **mobile first**, com uma interface mais moderna e funcional. A ideia é continuar evoluindo o projeto, integrando uma API e um banco de dados no futuro.
 
-Além disso, utilizei o React Router DOM para o gerenciamento das rotas e o Styled Components com SCSS para garantir uma estilização moderna e responsiva. Também empreguei o Bootstrap para melhorar a experiência do usuário e garantir um design atrativo. Em breve, meu foco será integrar uma API para armazenar dados de forma persistente e continuar expandindo a funcionalidade do site. 
+Atualmente, o projeto conta com funcionalidades essenciais de um e-commerce, como:
 
-Tecnologias Utilizadas
+- Autenticação de usuário  
+- Carrinho de compras  
+- Sistema de favoritos  
+- Barra de navegação dinâmica  
+- Filtros por categorias e pesquisa  
+- Sistema CRUD (criar, editar e atualizar dados do usuário)
 
-- React - TypeScript
-- Styled Components
-- SCSS - React Router DOM
-- Bootstrap - Recoil e Context API
-- Local Storage (para autenticação e dados locais)
-- API (para futuras integrações com o banco de dados)
+---
 
+## 🔐 Autenticação e Armazenamento
 
-Link do projeto :
+Foram utilizados recursos nativos do navegador, como o **Local Storage**, para simular uma experiência real de autenticação e persistência de dados.  
+A autenticação conta com validação local e **simulação de hash de senha**, reforçando boas práticas de segurança mesmo em um projeto de estudo.
+
+Dados como carrinho, favoritos e informações do usuário também são armazenados localmente.
+
+---
+
+## 🧠 Gerenciamento de Estado
+
+Para o gerenciamento de estado da aplicação, foram exploradas as seguintes abordagens:
+
+- **Recoil** (principalmente para autenticação)
+- **React Context API** (carrinho, favoritos e pesquisa)
+
+Essa estratégia permitiu organizar melhor os fluxos globais de dados, evitando *prop drilling* e facilitando a manutenção do código.
+
+---
+
+## 🧭 Rotas e Navegação
+
+O gerenciamento de rotas foi implementado com **React Router DOM**, permitindo:
+
+- Navegação entre páginas  
+- Rotas dinâmicas (ex: produto por ID)  
+- Organização das rotas em uma pasta dedicada, melhorando a arquitetura do projeto  
+
+---
+
+## 🎨 Estilização e UI
+
+A estilização foi pensada para facilitar manutenção e escalabilidade:
+
+- **SCSS** para organização de estilos, variáveis e mixins  
+- **Styled Components** para componentes que exigem maior controle de layout  
+- **Bootstrap** para componentes como modal, off-canvas e melhorias de UX  
+
+---
+
+## 🚀 Próximos Passos
+
+- Integração com uma API externa  
+- Persistência de dados em banco de dados  
+- Expansão das funcionalidades do CRUD  
+- Melhorias contínuas de performance e experiência do usuário  
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- React + TypeScript  
+- SCSS  
+- Styled Components  
+- React Router DOM  
+- Bootstrap  
+- Recoil  
+- Context API  
+- Local Storage  
+
+---
+
+## 🔗 Link do Projeto
 
 https://ecomerce-delta-seven.vercel.app/
