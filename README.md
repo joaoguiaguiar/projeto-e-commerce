@@ -80,4 +80,7 @@ A estilização foi pensada para facilitar manutenção e escalabilidade:
 
 ## 🔗 Link do Projeto
 
-https://ecomerce-delta-seven.vercel.app/
+https://urban-mart-ten.vercel.app/
+
+![Preview do Urban Mart](./public/preview/preview-home.png)
+
