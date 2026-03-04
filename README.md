@@ -1,6 +1,6 @@
 # 📦 Projeto simulação de E-commerce (Refatoração)
 
-Este projeto é inspirado em um e-commerce que estou desenvolvendo como parte do meu aprendizado contínuo em desenvolvimento web.  
+Este projeto é inspirado em um e-commerce que estou desenvolvendo como parte do meu aprendizado contínuo em desenvolvimento web  
 Esta versão representa uma **refatoração do projeto original**, onde o foco foi melhorar a arquitetura, o design e adicionar novas funcionalidades.
 
 O layout foi totalmente repensado, seguindo uma abordagem **mobile first**, com uma interface mais moderna e funcional. A ideia é continuar evoluindo o projeto, integrando uma API e um banco de dados no futuro.
