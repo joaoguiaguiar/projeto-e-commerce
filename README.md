@@ -1,4 +1,4 @@
-# 📦 Projeto simulação de E-commerce (Refatoração)
+# Projeto simulação de E-commerce (Refatoração)
 
 Este projeto é inspirado em um e-commerce que estou desenvolvendo como parte do meu aprendizado contínuo em desenvolvimento web  
 Esta versão representa uma **refatoração do projeto original**, onde o foco foi melhorar a arquitetura, o design e adicionar novas funcionalidades.
@@ -16,7 +16,7 @@ Atualmente, o projeto conta com funcionalidades essenciais de um e-commerce, com
 
 ---
 
-## 🔐 Autenticação e Armazenamento
+## Autenticação e Armazenamento
 
 Foram utilizados recursos nativos do navegador, como o **Local Storage**, para simular uma experiência real de autenticação e persistência de dados.  
 A autenticação conta com validação local e **simulação de hash de senha**, reforçando boas práticas de segurança mesmo em um projeto de estudo.
@@ -25,7 +25,7 @@ Dados como carrinho, favoritos e informações do usuário também são armazena
 
 ---
 
-## 🧠 Gerenciamento de Estado
+## Gerenciamento de Estado
 
 Para o gerenciamento de estado da aplicação, foram exploradas as seguintes abordagens:
 
@@ -36,7 +36,7 @@ Essa estratégia permitiu organizar melhor os fluxos globais de dados, evitando 
 
 ---
 
-## 🧭 Rotas e Navegação
+## Rotas e Navegação
 
 O gerenciamento de rotas foi implementado com **React Router DOM**, permitindo:
 
@@ -46,7 +46,7 @@ O gerenciamento de rotas foi implementado com **React Router DOM**, permitindo:
 
 ---
 
-## 🎨 Estilização e UI
+## Estilização e UI
 
 A estilização foi pensada para facilitar manutenção e escalabilidade:
 
@@ -56,7 +56,7 @@ A estilização foi pensada para facilitar manutenção e escalabilidade:
 
 ---
 
-## 🚀 Próximos Passos
+## Próximos Passos
 
 - Integração com uma API externa  
 - Persistência de dados em banco de dados  
@@ -65,7 +65,7 @@ A estilização foi pensada para facilitar manutenção e escalabilidade:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - React + TypeScript  
 - SCSS  
@@ -78,7 +78,7 @@ A estilização foi pensada para facilitar manutenção e escalabilidade:
 
 ---
 
-## 🔗 Link do Projeto
+## Link do Projeto
 
 https://urban-mart-ten.vercel.app/
 
